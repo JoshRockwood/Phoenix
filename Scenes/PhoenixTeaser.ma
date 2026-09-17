@@ -1,6 +1,6 @@
 //Maya ASCII 2026 scene
 //Name: PhoenixTeaser.ma
-//Last modified: Tue, Sep 15, 2026 08:59:34 PM
+//Last modified: Wed, Sep 16, 2026 10:52:30 PM
 //Codeset: 1252
 file -rdi 1 -ns "Phoenix1_SKM" -rfn "Phoenix1_SKMRN" -op "v=0;" -typ "mayaAscii"
 		 "C:/git/Phoenix//Assets/Characters/Phoenix Squad/Phoenix 1/Phoenix1_SKM.ma";
@@ -12,7 +12,6 @@ requires -nodeType "materialxStack" -nodeType "MaterialXSurfaceShader" -dataType
 requires "stereoCamera" "10.0";
 requires -nodeType "aiOptions" -nodeType "aiAOVDriver" -nodeType "aiAOVFilter" -nodeType "aiImagerDenoiserOptix"
 		 "mtoa" "5.5.4.2";
-requires "mtoa" "5.5.4.2";
 requires "stereoCamera" "10.0";
 currentUnit -l centimeter -a degree -t film;
 fileInfo "application" "maya";
@@ -20,21 +19,21 @@ fileInfo "product" "Maya 2026";
 fileInfo "version" "2026";
 fileInfo "cutIdentifier" "202510291147-60ec9eda33";
 fileInfo "osv" "Windows 11 Pro v2009 (Build: 26200)";
-fileInfo "UUID" "3C47930C-4AE7-1FCD-FD29-4095DE695075";
+fileInfo "UUID" "AB3160E5-446A-D64E-B465-C499108A4B82";
 createNode transform -s -n "persp";
 	rename -uid "C117C59C-4616-1941-C779-F98D02262165";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 4.3398396424817287 13.162806931778498 21.485513089225041 ;
-	setAttr ".r" -type "double3" -0.93835273046047629 -2867.7999999997051 5.0844443177610519e-17 ;
+	setAttr ".t" -type "double3" 42.037706817437929 12.747518661253398 3.4787621539442668 ;
+	setAttr ".r" -type "double3" -11.138352640445587 -5672.9999999939555 -1.5192971124393795e-14 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "9C0370A0-475F-F41D-5764-F3B6D65155BA";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999993;
-	setAttr ".coi" 22.400738896948329;
+	setAttr ".coi" 41.344414311600133;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
-	setAttr ".tp" -type "double3" 4.8181760367655269 9.365543994964554 0.79633391826959155 ;
+	setAttr ".tp" -type "double3" 4.8879460313792666 8.4429323136157493 7.4273071792028436 ;
 	setAttr ".hc" -type "string" "viewSet -p %camera";
 createNode transform -s -n "top";
 	rename -uid "B88932B4-45A6-EE8F-602A-ECBF05A18985";
@@ -115,30 +114,33 @@ createNode camera -n "RenderCamShape" -p "RenderCam";
 	setAttr ".rnd" no;
 	setAttr ".cap" -type "double2" 1.41732 0.94488 ;
 	setAttr ".ff" 0;
+	setAttr ".ovr" 1.3;
+	setAttr ".coi" 3.9840885859113486;
 	setAttr ".ow" 30;
 	setAttr ".imn" -type "string" "camera1";
 	setAttr ".den" -type "string" "camera1_depth";
 	setAttr ".man" -type "string" "camera1_mask";
+	setAttr ".dr" yes;
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "7EF3CC26-47D4-FA23-255C-B99162971CE2";
+	rename -uid "42AEB512-4041-33D7-B9EE-C294DC2ECAB7";
 	setAttr -s 15 ".lnk";
 	setAttr -s 15 ".slnk";
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "6762549C-4008-3548-DE5B-138A7FC22AF6";
+	rename -uid "0AB84850-4697-95D0-1C50-D1885F06E9AE";
 	setAttr ".bsdt[0].bscd" -type "Int32Array" 1 0 ;
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "4239F778-471D-0E7B-3A37-43A2396C1B4B";
+	rename -uid "018CFF9B-4145-E29A-255B-36B0D564756A";
 	setAttr ".tpdt[0].tpcd" -type "Int32Array" 1 0 ;
 createNode displayLayerManager -n "layerManager";
-	rename -uid "DCAB6160-4ADF-19DB-5834-EFA0A9E90BC6";
+	rename -uid "8E6B1EA6-4007-EA31-B088-609991449918";
 	setAttr ".cdl" 1;
-	setAttr ".dli[1]"  1;
+	setAttr -s 2 ".dli[1]"  1;
 	setAttr -s 2 ".dli";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "95AE1E74-4A08-F5B9-7C52-1490C7AA4688";
 	setAttr ".ufem" -type "stringArray" 0  ;
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "BDD24F01-4465-9D80-415D-D597F43A0EBE";
+	rename -uid "49D5798F-477C-8333-A1A1-F5949D356AB2";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "046071F3-46B7-9E7D-42AE-A0A1018CA5DC";
 	setAttr ".g" yes;
@@ -148,55 +150,46 @@ createNode script -n "uiConfigurationScriptNode";
 		"// Maya Mel UI Configuration File.\n//\n//  This script is machine generated.  Edit at your own risk.\n//\n//\n\nglobal string $gMainPane;\nif (`paneLayout -exists $gMainPane`) {\n\n\tglobal int $gUseScenePanelConfig;\n\tint    $useSceneConfig = $gUseScenePanelConfig;\n\tint    $nodeEditorPanelVisible = stringArrayContains(\"nodeEditorPanel1\", `getPanel -vis`);\n\tint    $nodeEditorWorkspaceControlOpen = (`workspaceControl -exists nodeEditorPanel1Window` && `workspaceControl -q -visible nodeEditorPanel1Window`);\n\tint    $menusOkayInPanels = `optionVar -q allowMenusInPanels`;\n\tint    $nVisPanes = `paneLayout -q -nvp $gMainPane`;\n\tint    $nPanes = 0;\n\tstring $editorName;\n\tstring $panelName;\n\tstring $itemFilterName;\n\tstring $panelConfig;\n\n\t//\n\t//  get current state of the UI\n\t//\n\tsceneUIReplacement -update $gMainPane;\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Top View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Top View\")) -mbv $menusOkayInPanels  $panelName;\n"
 		+ "\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"|RenderCam\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 0\n            -activeComponentsXray 0\n            -displayTextures 1\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 32768\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n"
 		+ "            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 1\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n"
-		+ "            -hulls 1\n            -grid 0\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1422\n            -height 768\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n"
+		+ "            -hulls 1\n            -grid 0\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n            -shadows 0\n            -captureSequenceNumber -1\n            -width 2853\n            -height 1603\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n"
 		+ "\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Side View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Side View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"|side\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 0\n            -activeComponentsXray 0\n            -displayTextures 0\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n"
 		+ "            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 32768\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n"
 		+ "            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 1\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n"
-		+ "            -shadows 0\n            -captureSequenceNumber -1\n            -width 1421\n            -height 768\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Front View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Front View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"|front\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n"
+		+ "            -shadows 0\n            -captureSequenceNumber -1\n            -width 1422\n            -height 768\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Front View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Front View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"|front\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n"
 		+ "            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 0\n            -activeComponentsXray 0\n            -displayTextures 0\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 32768\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n"
 		+ "            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 1\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n"
-		+ "            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1422\n            -height 768\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Persp View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Persp View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n"
+		+ "            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1423\n            -height 768\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Persp View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Persp View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n"
 		+ "        modelEditor -e \n            -camera \"|persp\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 0\n            -activeComponentsXray 0\n            -displayTextures 1\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 32768\n            -fogging 0\n            -fogSource \"fragment\" \n            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n"
 		+ "            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -controllers 1\n            -nurbsCurves 1\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 1\n"
-		+ "            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1421\n            -height 768\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n"
+		+ "            -imagePlane 1\n            -joints 1\n            -ikHandles 1\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -bluePencil 1\n            -greasePencils 0\n            -excludeObjectPreset \"All\" \n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1422\n            -height 768\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n"
 		+ "\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"outlinerPanel\" (localizedPanelLabel(\"ToggledOutliner\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\toutlinerPanel -edit -l (localizedPanelLabel(\"ToggledOutliner\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        outlinerEditor -e \n            -docTag \"isolOutln_fromSeln\" \n            -showShapes 0\n            -showAssignedMaterials 0\n            -showTimeEditor 1\n            -showReferenceNodes 1\n            -showReferenceMembers 1\n            -showAttributes 0\n            -showConnected 0\n            -showAnimCurvesOnly 0\n            -showMuteInfo 0\n            -organizeByLayer 1\n            -organizeByClip 1\n            -showAnimLayerWeight 1\n            -autoExpandLayers 1\n            -autoExpand 0\n            -showDagOnly 1\n            -showAssets 1\n            -showContainedOnly 1\n            -showPublishedAsConnected 0\n            -showParentContainers 0\n            -showContainerContents 1\n"
 		+ "            -ignoreDagHierarchy 0\n            -expandConnections 0\n            -showUpstreamCurves 1\n            -showUnitlessCurves 1\n            -showCompounds 1\n            -showLeafs 1\n            -showNumericAttrsOnly 0\n            -highlightActive 1\n            -autoSelectNewObjects 0\n            -doNotSelectNewObjects 0\n            -dropIsParent 1\n            -transmitFilters 0\n            -setFilter \"defaultSetFilter\" \n            -showSetMembers 1\n            -allowMultiSelection 1\n            -alwaysToggleSelect 0\n            -directSelect 0\n            -isSet 0\n            -isSetMember 0\n            -showUfeItems 1\n            -displayMode \"DAG\" \n            -expandObjects 0\n            -setsIgnoreFilters 1\n            -containersIgnoreFilters 0\n            -editAttrName 0\n            -showAttrValues 0\n            -highlightSecondary 0\n            -showUVAttrsOnly 0\n            -showTextureNodesOnly 0\n            -attrAlphaOrder \"default\" \n            -animLayerFilterOptions \"allAffecting\" \n            -sortOrder \"none\" \n"
 		+ "            -longNames 0\n            -niceNames 1\n            -selectCommand \"print(\\\"\\\")\" \n            -showNamespace 1\n            -showPinIcons 0\n            -mapMotionTrails 0\n            -ignoreHiddenAttribute 0\n            -ignoreOutlinerColor 0\n            -renderFilterVisible 0\n            -renderFilterIndex 0\n            -selectionOrder \"chronological\" \n            -expandAttribute 0\n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"outlinerPanel\" (localizedPanelLabel(\"Outliner\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\toutlinerPanel -edit -l (localizedPanelLabel(\"Outliner\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        outlinerEditor -e \n            -showShapes 0\n            -showAssignedMaterials 0\n            -showTimeEditor 1\n            -showReferenceNodes 0\n            -showReferenceMembers 0\n            -showAttributes 0\n            -showConnected 0\n"
 		+ "            -showAnimCurvesOnly 0\n            -showMuteInfo 0\n            -organizeByLayer 1\n            -organizeByClip 1\n            -showAnimLayerWeight 1\n            -autoExpandLayers 1\n            -autoExpand 0\n            -showDagOnly 1\n            -showAssets 1\n            -showContainedOnly 1\n            -showPublishedAsConnected 0\n            -showParentContainers 0\n            -showContainerContents 1\n            -ignoreDagHierarchy 0\n            -expandConnections 0\n            -showUpstreamCurves 1\n            -showUnitlessCurves 1\n            -showCompounds 1\n            -showLeafs 1\n            -showNumericAttrsOnly 0\n            -highlightActive 1\n            -autoSelectNewObjects 0\n            -doNotSelectNewObjects 0\n            -dropIsParent 1\n            -transmitFilters 0\n            -setFilter \"defaultSetFilter\" \n            -showSetMembers 1\n            -allowMultiSelection 1\n            -alwaysToggleSelect 0\n            -directSelect 0\n            -showUfeItems 1\n            -displayMode \"DAG\" \n"
 		+ "            -expandObjects 0\n            -setsIgnoreFilters 1\n            -containersIgnoreFilters 0\n            -editAttrName 0\n            -showAttrValues 0\n            -highlightSecondary 0\n            -showUVAttrsOnly 0\n            -showTextureNodesOnly 0\n            -attrAlphaOrder \"default\" \n            -animLayerFilterOptions \"allAffecting\" \n            -sortOrder \"none\" \n            -longNames 0\n            -niceNames 1\n            -showNamespace 1\n            -showPinIcons 0\n            -mapMotionTrails 0\n            -ignoreHiddenAttribute 0\n            -ignoreOutlinerColor 0\n            -renderFilterVisible 0\n            -ufeFilter \"USD\" \"InactivePrims\" -ufeFilterValue 1\n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"graphEditor\" (localizedPanelLabel(\"Graph Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Graph Editor\")) -mbv $menusOkayInPanels  $panelName;\n"
 		+ "\n\t\t\t$editorName = ($panelName+\"OutlineEd\");\n            outlinerEditor -e \n                -showShapes 1\n                -showAssignedMaterials 0\n                -showTimeEditor 1\n                -showReferenceNodes 0\n                -showReferenceMembers 0\n                -showAttributes 1\n                -showConnected 1\n                -showAnimCurvesOnly 1\n                -showMuteInfo 0\n                -organizeByLayer 1\n                -organizeByClip 1\n                -showAnimLayerWeight 1\n                -autoExpandLayers 1\n                -autoExpand 1\n                -showDagOnly 0\n                -showAssets 1\n                -showContainedOnly 0\n                -showPublishedAsConnected 0\n                -showParentContainers 0\n                -showContainerContents 0\n                -ignoreDagHierarchy 0\n                -expandConnections 1\n                -showUpstreamCurves 1\n                -showUnitlessCurves 1\n                -showCompounds 0\n                -showLeafs 1\n                -showNumericAttrsOnly 1\n"
-		+ "                -highlightActive 0\n                -autoSelectNewObjects 1\n                -doNotSelectNewObjects 0\n                -dropIsParent 1\n                -transmitFilters 1\n                -setFilter \"0\" \n                -showSetMembers 0\n                -allowMultiSelection 1\n                -alwaysToggleSelect 0\n                -directSelect 0\n                -isSet 0\n                -isSetMember 0\n                -showUfeItems 1\n                -displayMode \"DAG\" \n                -expandObjects 0\n                -setsIgnoreFilters 1\n                -containersIgnoreFilters 0\n                -editAttrName 0\n                -showAttrValues 0\n                -highlightSecondary 0\n                -showUVAttrsOnly 0\n                -showTextureNodesOnly 0\n                -attrAlphaOrder \"default\" \n                -animLayerFilterOptions \"allAffecting\" \n                -sortOrder \"none\" \n                -longNames 0\n                -niceNames 1\n                -showNamespace 1\n                -showPinIcons 1\n"
-		+ "                -mapMotionTrails 1\n                -ignoreHiddenAttribute 0\n                -ignoreOutlinerColor 0\n                -renderFilterVisible 0\n                -selectionOrder \"display\" \n                -expandAttribute 1\n                -ufeFilter \"USD\" \"InactivePrims\" -ufeFilterValue 1\n                $editorName;\n\n\t\t\t$editorName = ($panelName+\"GraphEd\");\n            animCurveEditor -e \n                -displayValues 0\n                -snapTime \"integer\" \n                -snapValue \"none\" \n                -showPlayRangeShades \"on\" \n                -lockPlayRangeShades \"off\" \n                -smoothness \"fine\" \n                -resultSamples 1\n                -resultScreenSamples 0\n                -resultUpdate \"delayed\" \n                -showUpstreamCurves 1\n                -tangentScale 1\n                -tangentLineThickness 1\n                -keyMinScale 1\n                -stackedCurvesMin -1\n                -stackedCurvesMax 1\n                -stackedCurvesSpace 0.2\n                -preSelectionHighlight 0\n"
-		+ "                -limitToSelectedCurves 0\n                -constrainDrag 0\n                -valueLinesToggle 0\n                -outliner \"graphEditor1OutlineEd\" \n                -highlightAffectedCurves 0\n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dopeSheetPanel\" (localizedPanelLabel(\"Dope Sheet\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Dope Sheet\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = ($panelName+\"OutlineEd\");\n            outlinerEditor -e \n                -showShapes 1\n                -showAssignedMaterials 0\n                -showTimeEditor 1\n                -showReferenceNodes 0\n                -showReferenceMembers 0\n                -showAttributes 1\n                -showConnected 1\n                -showAnimCurvesOnly 1\n                -showMuteInfo 0\n                -organizeByLayer 1\n                -organizeByClip 1\n"
-		+ "                -showAnimLayerWeight 1\n                -autoExpandLayers 1\n                -autoExpand 1\n                -showDagOnly 0\n                -showAssets 1\n                -showContainedOnly 0\n                -showPublishedAsConnected 0\n                -showParentContainers 0\n                -showContainerContents 0\n                -ignoreDagHierarchy 0\n                -expandConnections 1\n                -showUpstreamCurves 1\n                -showUnitlessCurves 0\n                -showCompounds 0\n                -showLeafs 1\n                -showNumericAttrsOnly 1\n                -highlightActive 0\n                -autoSelectNewObjects 0\n                -doNotSelectNewObjects 1\n                -dropIsParent 1\n                -transmitFilters 0\n                -setFilter \"0\" \n                -showSetMembers 1\n                -allowMultiSelection 1\n                -alwaysToggleSelect 0\n                -directSelect 0\n                -showUfeItems 1\n                -displayMode \"DAG\" \n                -expandObjects 0\n"
-		+ "                -setsIgnoreFilters 1\n                -containersIgnoreFilters 0\n                -editAttrName 0\n                -showAttrValues 0\n                -highlightSecondary 0\n                -showUVAttrsOnly 0\n                -showTextureNodesOnly 0\n                -attrAlphaOrder \"default\" \n                -animLayerFilterOptions \"allAffecting\" \n                -sortOrder \"none\" \n                -longNames 0\n                -niceNames 1\n                -showNamespace 1\n                -showPinIcons 0\n                -mapMotionTrails 1\n                -ignoreHiddenAttribute 0\n                -ignoreOutlinerColor 0\n                -renderFilterVisible 0\n                $editorName;\n\n\t\t\t$editorName = ($panelName+\"DopeSheetEd\");\n            dopeSheetEditor -e \n                -displayValues 0\n                -snapTime \"none\" \n                -snapValue \"none\" \n                -outliner \"dopeSheetPanel1OutlineEd\" \n                -hierarchyBelow 0\n                -selectionWindow 0 0 0 0 \n                $editorName;\n"
-		+ "\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"timeEditorPanel\" (localizedPanelLabel(\"Time Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Time Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"clipEditorPanel\" (localizedPanelLabel(\"Trax Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Trax Editor\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = clipEditorNameFromPanel($panelName);\n            clipEditor -e \n                -displayValues 0\n                -snapTime \"none\" \n                -snapValue \"none\" \n                -initialized 0\n                -manageSequencer 0 \n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n"
-		+ "\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"sequenceEditorPanel\" (localizedPanelLabel(\"Camera Sequencer\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Camera Sequencer\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = sequenceEditorNameFromPanel($panelName);\n            clipEditor -e \n                -displayValues 0\n                -snapTime \"none\" \n                -snapValue \"none\" \n                -initialized 0\n                -manageSequencer 1 \n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"hyperGraphPanel\" (localizedPanelLabel(\"Hypergraph Hierarchy\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Hypergraph Hierarchy\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = ($panelName+\"HyperGraphEd\");\n            hyperGraph -e \n"
-		+ "                -graphLayoutStyle \"hierarchicalLayout\" \n                -orientation \"horiz\" \n                -mergeConnections 0\n                -zoom 1\n                -animateTransition 0\n                -showRelationships 1\n                -showShapes 0\n                -showDeformers 0\n                -showExpressions 0\n                -showConstraints 0\n                -showConnectionFromSelected 0\n                -showConnectionToSelected 0\n                -showConstraintLabels 0\n                -showUnderworld 0\n                -showInvisible 0\n                -transitionFrames 1\n                -opaqueContainers 0\n                -freeform 0\n                -imagePosition 0 0 \n                -imageScale 1\n                -imageEnabled 0\n                -graphType \"DAG\" \n                -heatMapDisplay 0\n                -updateSelection 1\n                -updateNodeAdded 1\n                -useDrawOverrideColor 0\n                -limitGraphTraversal -1\n                -range 0 0 \n                -iconSize \"smallIcons\" \n"
-		+ "                -showCachedConnections 0\n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"hyperShadePanel\" (localizedPanelLabel(\"Hypershade\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Hypershade\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"visorPanel\" (localizedPanelLabel(\"Visor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Visor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"nodeEditorPanel\" (localizedPanelLabel(\"Node Editor\")) `;\n\tif ($nodeEditorPanelVisible || $nodeEditorWorkspaceControlOpen) {\n\t\tif (\"\" == $panelName) {\n\t\t\tif ($useSceneConfig) {\n"
-		+ "\t\t\t\t$panelName = `scriptedPanel -unParent  -type \"nodeEditorPanel\" -l (localizedPanelLabel(\"Node Editor\")) -mbv $menusOkayInPanels `;\n\n\t\t\t$editorName = ($panelName+\"NodeEditorEd\");\n            nodeEditor -e \n                -allAttributes 0\n                -allNodes 0\n                -autoSizeNodes 1\n                -consistentNameSize 1\n                -createNodeCommand \"nodeEdCreateNodeCommand\" \n                -connectNodeOnCreation 0\n                -connectOnDrop 0\n                -copyConnectionsOnPaste 0\n                -connectionStyle \"bezier\" \n                -defaultPinnedState 0\n                -additiveGraphingMode 0\n                -connectedGraphingMode 1\n                -settingsChangedCallback \"nodeEdSyncControls\" \n                -traversalDepthLimit -1\n                -keyPressCommand \"nodeEdKeyPressCommand\" \n                -nodeTitleMode \"name\" \n                -gridSnap 0\n                -gridVisibility 1\n                -crosshairOnEdgeDragging 0\n                -popupMenuScript \"nodeEdBuildPanelMenus\" \n"
-		+ "                -showNamespace 1\n                -showShapes 1\n                -showSGShapes 0\n                -showTransforms 1\n                -useAssets 1\n                -syncedSelection 1\n                -extendToShapes 1\n                -showUnitConversions 0\n                -editorMode \"default\" \n                -hasWatchpoint 0\n                $editorName;\n\t\t\t}\n\t\t} else {\n\t\t\t$label = `panel -q -label $panelName`;\n\t\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Node Editor\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = ($panelName+\"NodeEditorEd\");\n            nodeEditor -e \n                -allAttributes 0\n                -allNodes 0\n                -autoSizeNodes 1\n                -consistentNameSize 1\n                -createNodeCommand \"nodeEdCreateNodeCommand\" \n                -connectNodeOnCreation 0\n                -connectOnDrop 0\n                -copyConnectionsOnPaste 0\n                -connectionStyle \"bezier\" \n                -defaultPinnedState 0\n                -additiveGraphingMode 0\n"
-		+ "                -connectedGraphingMode 1\n                -settingsChangedCallback \"nodeEdSyncControls\" \n                -traversalDepthLimit -1\n                -keyPressCommand \"nodeEdKeyPressCommand\" \n                -nodeTitleMode \"name\" \n                -gridSnap 0\n                -gridVisibility 1\n                -crosshairOnEdgeDragging 0\n                -popupMenuScript \"nodeEdBuildPanelMenus\" \n                -showNamespace 1\n                -showShapes 1\n                -showSGShapes 0\n                -showTransforms 1\n                -useAssets 1\n                -syncedSelection 1\n                -extendToShapes 1\n                -showUnitConversions 0\n                -editorMode \"default\" \n                -hasWatchpoint 0\n                $editorName;\n\t\t\tif (!$useSceneConfig) {\n\t\t\t\tpanel -e -l $label $panelName;\n\t\t\t}\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"createNodePanel\" (localizedPanelLabel(\"Create Node\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n"
-		+ "\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Create Node\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"polyTexturePlacementPanel\" (localizedPanelLabel(\"UV Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"UV Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"renderWindowPanel\" (localizedPanelLabel(\"Render View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Render View\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"shapePanel\" (localizedPanelLabel(\"Shape Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n"
-		+ "\t\tshapePanel -edit -l (localizedPanelLabel(\"Shape Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"posePanel\" (localizedPanelLabel(\"Pose Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tposePanel -edit -l (localizedPanelLabel(\"Pose Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dynRelEdPanel\" (localizedPanelLabel(\"Dynamic Relationships\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Dynamic Relationships\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"relationshipPanel\" (localizedPanelLabel(\"Relationship Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n"
-		+ "\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Relationship Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"referenceEditorPanel\" (localizedPanelLabel(\"Reference Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Reference Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dynPaintScriptedPanelType\" (localizedPanelLabel(\"Paint Effects\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Paint Effects\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"scriptEditorPanel\" (localizedPanelLabel(\"Script Editor\")) `;\n\tif (\"\" != $panelName) {\n"
-		+ "\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Script Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"profilerPanel\" (localizedPanelLabel(\"Profiler Tool\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Profiler Tool\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"motionMakerEditorPanel\" (localizedPanelLabel(\"MotionMaker Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"MotionMaker Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"contentBrowserPanel\" (localizedPanelLabel(\"Content Browser\")) `;\n"
-		+ "\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Content Browser\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"Stereo\" (localizedPanelLabel(\"Stereo\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Stereo\")) -mbv $menusOkayInPanels  $panelName;\n{ string $editorName = ($panelName+\"Editor\");\n            stereoCameraView -e \n                -camera \"|:persp\" \n                -useInteractiveMode 0\n                -displayLights \"default\" \n                -displayAppearance \"wireframe\" \n                -activeOnly 0\n                -ignorePanZoom 0\n                -wireframeOnShaded 0\n                -headsUpDisplay 1\n                -holdOuts 1\n                -selectionHiliteDisplay 1\n                -useDefaultMaterial 0\n                -bufferMode \"double\" \n                -twoSidedLighting 1\n"
-		+ "                -backfaceCulling 0\n                -xray 0\n                -jointXray 0\n                -activeComponentsXray 0\n                -displayTextures 0\n                -smoothWireframe 0\n                -lineWidth 1\n                -textureAnisotropic 0\n                -textureHilight 1\n                -textureSampling 2\n                -textureDisplay \"modulate\" \n                -textureMaxSize 32768\n                -fogging 0\n                -fogSource \"fragment\" \n                -fogMode \"linear\" \n                -fogStart 0\n                -fogEnd 100\n                -fogDensity 0.1\n                -fogColor 0.5 0.5 0.5 1 \n                -depthOfFieldPreview 1\n                -maxConstantTransparency 1\n                -objectFilterShowInHUD 1\n                -isFiltered 0\n                -colorResolution 4 4 \n                -bumpResolution 4 4 \n                -textureCompression 0\n                -transparencyAlgorithm \"frontAndBackCull\" \n                -transpInShadows 0\n                -cullingOverride \"none\" \n"
-		+ "                -lowQualityLighting 0\n                -maximumNumHardwareLights 0\n                -occlusionCulling 0\n                -shadingModel 0\n                -useBaseRenderer 0\n                -useReducedRenderer 0\n                -smallObjectCulling 0\n                -smallObjectThreshold -1 \n                -interactiveDisableShadows 0\n                -interactiveBackFaceCull 0\n                -sortTransparent 1\n                -controllers 1\n                -nurbsCurves 1\n                -nurbsSurfaces 1\n                -polymeshes 1\n                -subdivSurfaces 1\n                -planes 1\n                -lights 1\n                -cameras 1\n                -controlVertices 1\n                -hulls 1\n                -grid 1\n                -imagePlane 1\n                -joints 1\n                -ikHandles 1\n                -deformers 1\n                -dynamics 1\n                -particleInstancers 1\n                -fluids 1\n                -hairSystems 1\n                -follicles 1\n                -nCloths 1\n"
-		+ "                -nParticles 1\n                -nRigids 1\n                -dynamicConstraints 1\n                -locators 1\n                -manipulators 1\n                -pluginShapes 1\n                -dimensions 1\n                -handles 1\n                -pivots 1\n                -textures 1\n                -strokes 1\n                -motionTrails 1\n                -clipGhosts 1\n                -bluePencil 1\n                -greasePencils 0\n                -shadows 0\n                -captureSequenceNumber -1\n                -width 0\n                -height 0\n                -sceneRenderFilter 0\n                -displayMode \"centerEye\" \n                -viewColor 0 0 0 1 \n                -useCustomBackground 1\n                $editorName;\n            stereoCameraView -e -viewSelected 0 $editorName;\n            stereoCameraView -e \n                -pluginObjects \"gpuCacheDisplayFilter\" 1 \n                $editorName; };\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\tif ($useSceneConfig) {\n"
-		+ "        string $configName = `getPanel -cwl (localizedPanelLabel(\"Current Layout\"))`;\n        if (\"\" != $configName) {\n\t\t\tpanelConfiguration -edit -label (localizedPanelLabel(\"Current Layout\")) \n\t\t\t\t-userCreated false\n\t\t\t\t-defaultImage \"vacantCell.xP:/\"\n\t\t\t\t-image \"\"\n\t\t\t\t-sc false\n\t\t\t\t-configString \"global string $gMainPane; paneLayout -e -cn \\\"quad\\\" -ps 1 50 50 -ps 2 50 50 -ps 3 50 50 -ps 4 50 50 $gMainPane;\"\n\t\t\t\t-removeAllPanels\n\t\t\t\t-ap false\n\t\t\t\t\t(localizedPanelLabel(\"Top View\")) \n\t\t\t\t\t\"modelPanel\"\n"
-		+ "\t\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Top View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -camera \\\"|RenderCam\\\" \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 1\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 0\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -excludeObjectPreset \\\"All\\\" \\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1422\\n    -height 768\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
-		+ "\t\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Top View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -camera \\\"|RenderCam\\\" \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 1\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 0\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -excludeObjectPreset \\\"All\\\" \\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1422\\n    -height 768\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
-		+ "\t\t\t\t-ap false\n\t\t\t\t\t(localizedPanelLabel(\"Persp View\")) \n\t\t\t\t\t\"modelPanel\"\n"
-		+ "\t\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 1\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -excludeObjectPreset \\\"All\\\" \\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1421\\n    -height 768\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
-		+ "\t\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 1\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -excludeObjectPreset \\\"All\\\" \\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1421\\n    -height 768\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
-		+ "\t\t\t\t-ap false\n\t\t\t\t\t(localizedPanelLabel(\"Side View\")) \n\t\t\t\t\t\"modelPanel\"\n"
-		+ "\t\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Side View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera side` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -excludeObjectPreset \\\"All\\\" \\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1421\\n    -height 768\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
-		+ "\t\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Side View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera side` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -excludeObjectPreset \\\"All\\\" \\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1421\\n    -height 768\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
-		+ "\t\t\t\t-ap false\n\t\t\t\t\t(localizedPanelLabel(\"Front View\")) \n\t\t\t\t\t\"modelPanel\"\n"
-		+ "\t\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Front View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera front` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -excludeObjectPreset \\\"All\\\" \\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1422\\n    -height 768\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
-		+ "\t\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Front View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera front` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 0\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -excludeObjectPreset \\\"All\\\" \\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1422\\n    -height 768\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
+		+ "                -highlightActive 0\n                -autoSelectNewObjects 1\n                -doNotSelectNewObjects 0\n                -dropIsParent 1\n                -transmitFilters 1\n                -setFilter \"0\" \n                -showSetMembers 0\n                -allowMultiSelection 1\n                -alwaysToggleSelect 0\n                -directSelect 0\n                -showUfeItems 1\n                -displayMode \"DAG\" \n                -expandObjects 0\n                -setsIgnoreFilters 1\n                -containersIgnoreFilters 0\n                -editAttrName 0\n                -showAttrValues 0\n                -highlightSecondary 0\n                -showUVAttrsOnly 0\n                -showTextureNodesOnly 0\n                -attrAlphaOrder \"default\" \n                -animLayerFilterOptions \"allAffecting\" \n                -sortOrder \"none\" \n                -longNames 0\n                -niceNames 1\n                -showNamespace 1\n                -showPinIcons 1\n                -mapMotionTrails 1\n                -ignoreHiddenAttribute 0\n"
+		+ "                -ignoreOutlinerColor 0\n                -renderFilterVisible 0\n                $editorName;\n\n\t\t\t$editorName = ($panelName+\"GraphEd\");\n            animCurveEditor -e \n                -displayValues 0\n                -snapTime \"integer\" \n                -snapValue \"none\" \n                -showPlayRangeShades \"on\" \n                -lockPlayRangeShades \"off\" \n                -smoothness \"fine\" \n                -resultSamples 1\n                -resultScreenSamples 0\n                -resultUpdate \"delayed\" \n                -showUpstreamCurves 1\n                -tangentScale 1\n                -tangentLineThickness 1\n                -keyMinScale 1\n                -stackedCurvesMin -1\n                -stackedCurvesMax 1\n                -stackedCurvesSpace 0.2\n                -preSelectionHighlight 0\n                -limitToSelectedCurves 0\n                -constrainDrag 0\n                -valueLinesToggle 0\n                -outliner \"graphEditor1OutlineEd\" \n                -highlightAffectedCurves 0\n                $editorName;\n"
+		+ "\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dopeSheetPanel\" (localizedPanelLabel(\"Dope Sheet\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Dope Sheet\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = ($panelName+\"OutlineEd\");\n            outlinerEditor -e \n                -showShapes 1\n                -showAssignedMaterials 0\n                -showTimeEditor 1\n                -showReferenceNodes 0\n                -showReferenceMembers 0\n                -showAttributes 1\n                -showConnected 1\n                -showAnimCurvesOnly 1\n                -showMuteInfo 0\n                -organizeByLayer 1\n                -organizeByClip 1\n                -showAnimLayerWeight 1\n                -autoExpandLayers 1\n                -autoExpand 1\n                -showDagOnly 0\n                -showAssets 1\n                -showContainedOnly 0\n                -showPublishedAsConnected 0\n"
+		+ "                -showParentContainers 0\n                -showContainerContents 0\n                -ignoreDagHierarchy 0\n                -expandConnections 1\n                -showUpstreamCurves 1\n                -showUnitlessCurves 0\n                -showCompounds 0\n                -showLeafs 1\n                -showNumericAttrsOnly 1\n                -highlightActive 0\n                -autoSelectNewObjects 0\n                -doNotSelectNewObjects 1\n                -dropIsParent 1\n                -transmitFilters 0\n                -setFilter \"0\" \n                -showSetMembers 1\n                -allowMultiSelection 1\n                -alwaysToggleSelect 0\n                -directSelect 0\n                -showUfeItems 1\n                -displayMode \"DAG\" \n                -expandObjects 0\n                -setsIgnoreFilters 1\n                -containersIgnoreFilters 0\n                -editAttrName 0\n                -showAttrValues 0\n                -highlightSecondary 0\n                -showUVAttrsOnly 0\n                -showTextureNodesOnly 0\n"
+		+ "                -attrAlphaOrder \"default\" \n                -animLayerFilterOptions \"allAffecting\" \n                -sortOrder \"none\" \n                -longNames 0\n                -niceNames 1\n                -showNamespace 1\n                -showPinIcons 0\n                -mapMotionTrails 1\n                -ignoreHiddenAttribute 0\n                -ignoreOutlinerColor 0\n                -renderFilterVisible 0\n                $editorName;\n\n\t\t\t$editorName = ($panelName+\"DopeSheetEd\");\n            dopeSheetEditor -e \n                -displayValues 0\n                -snapTime \"none\" \n                -snapValue \"none\" \n                -outliner \"dopeSheetPanel1OutlineEd\" \n                -hierarchyBelow 0\n                -selectionWindow 0 0 0 0 \n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"timeEditorPanel\" (localizedPanelLabel(\"Time Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n"
+		+ "\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Time Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"clipEditorPanel\" (localizedPanelLabel(\"Trax Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Trax Editor\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = clipEditorNameFromPanel($panelName);\n            clipEditor -e \n                -displayValues 0\n                -snapTime \"none\" \n                -snapValue \"none\" \n                -initialized 0\n                -manageSequencer 0 \n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"sequenceEditorPanel\" (localizedPanelLabel(\"Camera Sequencer\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Camera Sequencer\")) -mbv $menusOkayInPanels  $panelName;\n"
+		+ "\n\t\t\t$editorName = sequenceEditorNameFromPanel($panelName);\n            clipEditor -e \n                -displayValues 0\n                -snapTime \"none\" \n                -snapValue \"none\" \n                -initialized 0\n                -manageSequencer 1 \n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"hyperGraphPanel\" (localizedPanelLabel(\"Hypergraph Hierarchy\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Hypergraph Hierarchy\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = ($panelName+\"HyperGraphEd\");\n            hyperGraph -e \n                -graphLayoutStyle \"hierarchicalLayout\" \n                -orientation \"horiz\" \n                -mergeConnections 0\n                -zoom 1\n                -animateTransition 0\n                -showRelationships 1\n                -showShapes 0\n                -showDeformers 0\n                -showExpressions 0\n"
+		+ "                -showConstraints 0\n                -showConnectionFromSelected 0\n                -showConnectionToSelected 0\n                -showConstraintLabels 0\n                -showUnderworld 0\n                -showInvisible 0\n                -transitionFrames 1\n                -opaqueContainers 0\n                -freeform 0\n                -imagePosition 0 0 \n                -imageScale 1\n                -imageEnabled 0\n                -graphType \"DAG\" \n                -heatMapDisplay 0\n                -updateSelection 1\n                -updateNodeAdded 1\n                -useDrawOverrideColor 0\n                -limitGraphTraversal -1\n                -range 0 0 \n                -iconSize \"smallIcons\" \n                -showCachedConnections 0\n                $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"hyperShadePanel\" (localizedPanelLabel(\"Hypershade\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n"
+		+ "\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Hypershade\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"visorPanel\" (localizedPanelLabel(\"Visor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Visor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"nodeEditorPanel\" (localizedPanelLabel(\"Node Editor\")) `;\n\tif ($nodeEditorPanelVisible || $nodeEditorWorkspaceControlOpen) {\n\t\tif (\"\" == $panelName) {\n\t\t\tif ($useSceneConfig) {\n\t\t\t\t$panelName = `scriptedPanel -unParent  -type \"nodeEditorPanel\" -l (localizedPanelLabel(\"Node Editor\")) -mbv $menusOkayInPanels `;\n\n\t\t\t$editorName = ($panelName+\"NodeEditorEd\");\n            nodeEditor -e \n                -allAttributes 0\n                -allNodes 0\n                -autoSizeNodes 1\n"
+		+ "                -consistentNameSize 1\n                -createNodeCommand \"nodeEdCreateNodeCommand\" \n                -connectNodeOnCreation 0\n                -connectOnDrop 0\n                -copyConnectionsOnPaste 0\n                -connectionStyle \"bezier\" \n                -defaultPinnedState 0\n                -additiveGraphingMode 0\n                -connectedGraphingMode 1\n                -settingsChangedCallback \"nodeEdSyncControls\" \n                -traversalDepthLimit -1\n                -keyPressCommand \"nodeEdKeyPressCommand\" \n                -nodeTitleMode \"name\" \n                -gridSnap 0\n                -gridVisibility 1\n                -crosshairOnEdgeDragging 0\n                -popupMenuScript \"nodeEdBuildPanelMenus\" \n                -showNamespace 1\n                -showShapes 1\n                -showSGShapes 0\n                -showTransforms 1\n                -useAssets 1\n                -syncedSelection 1\n                -extendToShapes 1\n                -showUnitConversions 0\n                -editorMode \"default\" \n"
+		+ "                -hasWatchpoint 0\n                $editorName;\n\t\t\t}\n\t\t} else {\n\t\t\t$label = `panel -q -label $panelName`;\n\t\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Node Editor\")) -mbv $menusOkayInPanels  $panelName;\n\n\t\t\t$editorName = ($panelName+\"NodeEditorEd\");\n            nodeEditor -e \n                -allAttributes 0\n                -allNodes 0\n                -autoSizeNodes 1\n                -consistentNameSize 1\n                -createNodeCommand \"nodeEdCreateNodeCommand\" \n                -connectNodeOnCreation 0\n                -connectOnDrop 0\n                -copyConnectionsOnPaste 0\n                -connectionStyle \"bezier\" \n                -defaultPinnedState 0\n                -additiveGraphingMode 0\n                -connectedGraphingMode 1\n                -settingsChangedCallback \"nodeEdSyncControls\" \n                -traversalDepthLimit -1\n                -keyPressCommand \"nodeEdKeyPressCommand\" \n                -nodeTitleMode \"name\" \n                -gridSnap 0\n                -gridVisibility 1\n"
+		+ "                -crosshairOnEdgeDragging 0\n                -popupMenuScript \"nodeEdBuildPanelMenus\" \n                -showNamespace 1\n                -showShapes 1\n                -showSGShapes 0\n                -showTransforms 1\n                -useAssets 1\n                -syncedSelection 1\n                -extendToShapes 1\n                -showUnitConversions 0\n                -editorMode \"default\" \n                -hasWatchpoint 0\n                $editorName;\n\t\t\tif (!$useSceneConfig) {\n\t\t\t\tpanel -e -l $label $panelName;\n\t\t\t}\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"createNodePanel\" (localizedPanelLabel(\"Create Node\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Create Node\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"polyTexturePlacementPanel\" (localizedPanelLabel(\"UV Editor\")) `;\n\tif (\"\" != $panelName) {\n"
+		+ "\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"UV Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"renderWindowPanel\" (localizedPanelLabel(\"Render View\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Render View\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"shapePanel\" (localizedPanelLabel(\"Shape Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tshapePanel -edit -l (localizedPanelLabel(\"Shape Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"posePanel\" (localizedPanelLabel(\"Pose Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n"
+		+ "\t\tposePanel -edit -l (localizedPanelLabel(\"Pose Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dynRelEdPanel\" (localizedPanelLabel(\"Dynamic Relationships\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Dynamic Relationships\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"relationshipPanel\" (localizedPanelLabel(\"Relationship Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Relationship Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"referenceEditorPanel\" (localizedPanelLabel(\"Reference Editor\")) `;\n\tif (\"\" != $panelName) {\n"
+		+ "\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Reference Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"dynPaintScriptedPanelType\" (localizedPanelLabel(\"Paint Effects\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Paint Effects\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"scriptEditorPanel\" (localizedPanelLabel(\"Script Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Script Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"profilerPanel\" (localizedPanelLabel(\"Profiler Tool\")) `;\n"
+		+ "\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Profiler Tool\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"motionMakerEditorPanel\" (localizedPanelLabel(\"MotionMaker Editor\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"MotionMaker Editor\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"contentBrowserPanel\" (localizedPanelLabel(\"Content Browser\")) `;\n\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Content Browser\")) -mbv $menusOkayInPanels  $panelName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextScriptedPanel \"Stereo\" (localizedPanelLabel(\"Stereo\")) `;\n"
+		+ "\tif (\"\" != $panelName) {\n\t\t$label = `panel -q -label $panelName`;\n\t\tscriptedPanel -edit -l (localizedPanelLabel(\"Stereo\")) -mbv $menusOkayInPanels  $panelName;\n{ string $editorName = ($panelName+\"Editor\");\n            stereoCameraView -e \n                -camera \"|persp\" \n                -useInteractiveMode 0\n                -displayLights \"default\" \n                -displayAppearance \"wireframe\" \n                -activeOnly 0\n                -ignorePanZoom 0\n                -wireframeOnShaded 0\n                -headsUpDisplay 1\n                -holdOuts 1\n                -selectionHiliteDisplay 1\n                -useDefaultMaterial 0\n                -bufferMode \"double\" \n                -twoSidedLighting 1\n                -backfaceCulling 0\n                -xray 0\n                -jointXray 0\n                -activeComponentsXray 0\n                -displayTextures 0\n                -smoothWireframe 0\n                -lineWidth 1\n                -textureAnisotropic 0\n                -textureHilight 1\n                -textureSampling 2\n"
+		+ "                -textureDisplay \"modulate\" \n                -textureMaxSize 32768\n                -fogging 0\n                -fogSource \"fragment\" \n                -fogMode \"linear\" \n                -fogStart 0\n                -fogEnd 100\n                -fogDensity 0.1\n                -fogColor 0.5 0.5 0.5 1 \n                -depthOfFieldPreview 1\n                -maxConstantTransparency 1\n                -objectFilterShowInHUD 1\n                -isFiltered 0\n                -colorResolution 4 4 \n                -bumpResolution 4 4 \n                -textureCompression 0\n                -transparencyAlgorithm \"frontAndBackCull\" \n                -transpInShadows 0\n                -cullingOverride \"none\" \n                -lowQualityLighting 0\n                -maximumNumHardwareLights 0\n                -occlusionCulling 0\n                -shadingModel 0\n                -useBaseRenderer 0\n                -useReducedRenderer 0\n                -smallObjectCulling 0\n                -smallObjectThreshold -1 \n                -interactiveDisableShadows 0\n"
+		+ "                -interactiveBackFaceCull 0\n                -sortTransparent 1\n                -controllers 1\n                -nurbsCurves 1\n                -nurbsSurfaces 1\n                -polymeshes 1\n                -subdivSurfaces 1\n                -planes 1\n                -lights 1\n                -cameras 1\n                -controlVertices 1\n                -hulls 1\n                -grid 1\n                -imagePlane 1\n                -joints 1\n                -ikHandles 1\n                -deformers 1\n                -dynamics 1\n                -particleInstancers 1\n                -fluids 1\n                -hairSystems 1\n                -follicles 1\n                -nCloths 1\n                -nParticles 1\n                -nRigids 1\n                -dynamicConstraints 1\n                -locators 1\n                -manipulators 1\n                -pluginShapes 1\n                -dimensions 1\n                -handles 1\n                -pivots 1\n                -textures 1\n                -strokes 1\n                -motionTrails 1\n"
+		+ "                -clipGhosts 1\n                -bluePencil 1\n                -greasePencils 0\n                -shadows 0\n                -captureSequenceNumber -1\n                -width 0\n                -height 0\n                -sceneRenderFilter 0\n                -displayMode \"centerEye\" \n                -viewColor 0 0 0 1 \n                -useCustomBackground 1\n                $editorName;\n            stereoCameraView -e -viewSelected 0 $editorName;\n            stereoCameraView -e \n                -pluginObjects \"gpuCacheDisplayFilter\" 1 \n                $editorName; };\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\tif ($useSceneConfig) {\n        string $configName = `getPanel -cwl (localizedPanelLabel(\"Current Layout\"))`;\n        if (\"\" != $configName) {\n\t\t\tpanelConfiguration -edit -label (localizedPanelLabel(\"Current Layout\")) \n\t\t\t\t-userCreated false\n\t\t\t\t-defaultImage \"vacantCell.xP:/\"\n\t\t\t\t-image \"\"\n\t\t\t\t-sc false\n\t\t\t\t-configString \"global string $gMainPane; paneLayout -e -cn \\\"single\\\" -ps 1 100 100 $gMainPane;\"\n"
+		+ "\t\t\t\t-removeAllPanels\n\t\t\t\t-ap false\n\t\t\t\t\t(localizedPanelLabel(\"Top View\")) \n\t\t\t\t\t\"modelPanel\"\n"
+		+ "\t\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Top View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -camera \\\"|RenderCam\\\" \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 1\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 0\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -excludeObjectPreset \\\"All\\\" \\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 2853\\n    -height 1603\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
+		+ "\t\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Top View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -camera \\\"|RenderCam\\\" \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 0\\n    -activeComponentsXray 0\\n    -displayTextures 1\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 32768\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -controllers 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 0\\n    -imagePlane 1\\n    -joints 1\\n    -ikHandles 1\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -bluePencil 1\\n    -greasePencils 0\\n    -excludeObjectPreset \\\"All\\\" \\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 2853\\n    -height 1603\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
 		+ "\t\t\t\t$configName;\n\n            setNamedPanelLayout (localizedPanelLabel(\"Current Layout\"));\n        }\n\n        panelHistory -e -clear mainPanelHistory;\n        sceneUIReplacement -clear;\n\t}\n\n\ngrid -spacing 5 -size 12 -divisions 5 -displayAxes yes -displayGridLines yes -displayDivisionLines yes -displayPerspectiveLabels no -displayOrthographicLabels no -displayAxesBold yes -perspectiveLabelPosition axis -orthographicLabelPosition edge;\nviewManip -drawCompass 0 -compassAngle 0 -frontParameters \"\" -homeParameters \"\" -selectionLockParameters \"\";\n}\n");
 	setAttr ".st" 3;
 createNode script -n "sceneConfigurationScriptNode";
@@ -205,7 +198,7 @@ createNode script -n "sceneConfigurationScriptNode";
 	setAttr ".st" 6;
 createNode reference -n "Phoenix1_SKMRN";
 	rename -uid "0FF96D88-46B5-B97D-FE6E-5F92C0CD9338";
-	setAttr -s 404 ".phl";
+	setAttr -s 405 ".phl";
 	setAttr ".phl[1]" 0;
 	setAttr ".phl[2]" 0;
 	setAttr ".phl[3]" 0;
@@ -610,10 +603,106 @@ createNode reference -n "Phoenix1_SKMRN";
 	setAttr ".phl[402]" 0;
 	setAttr ".phl[403]" 0;
 	setAttr ".phl[404]" 0;
+	setAttr ".phl[405]" 0;
 	setAttr ".ed" -type "dataReferenceEdits" 
 		"Phoenix1_SKMRN"
 		"Phoenix1_SKMRN" 0
-		"Phoenix1_SKMRN" 444
+		"Phoenix1_SKMRN" 493
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Helmet_grp|Phoenix1_SKM:Helmet_Visor|Phoenix1_SKM:Helmet_VisorShape" 
+		"ghosting" " 1"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Helmet_grp|Phoenix1_SKM:Helmet_Visor|Phoenix1_SKM:Helmet_VisorShape" 
+		"ghostingMode" " 0"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Helmet_grp|Phoenix1_SKM:Helmet_Visor|Phoenix1_SKM:Helmet_VisorShape" 
+		"ghostPreFrames" " 3"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Helmet_grp|Phoenix1_SKM:Helmet_Visor|Phoenix1_SKM:Helmet_VisorShape" 
+		"ghostPostFrames" " 3"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Helmet_grp|Phoenix1_SKM:Helmet_Visor|Phoenix1_SKM:Helmet_VisorShape" 
+		"ghostsStep" " 4"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Helmet_grp|Phoenix1_SKM:Helmet_Visor|Phoenix1_SKM:Helmet_VisorShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Helmet_grp|Phoenix1_SKM:Helmet_Visor|Phoenix1_SKM:Helmet_VisorShape" 
+		"ghostOpacityRange" " -type \"float2\" 0.15000000999999999 0.5"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Helmet_grp|Phoenix1_SKM:Helmet_Visor|Phoenix1_SKM:Helmet_VisorShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Helmet_grp|Phoenix1_SKM:Helmet_Visor|Phoenix1_SKM:Helmet_VisorShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Helmet_grp|Phoenix1_SKM:Helmet|Phoenix1_SKM:HelmetShape" 
+		"ghosting" " 1"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Helmet_grp|Phoenix1_SKM:Helmet|Phoenix1_SKM:HelmetShape" 
+		"ghostingMode" " 0"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Helmet_grp|Phoenix1_SKM:Helmet|Phoenix1_SKM:HelmetShape" 
+		"ghostPreFrames" " 3"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Helmet_grp|Phoenix1_SKM:Helmet|Phoenix1_SKM:HelmetShape" 
+		"ghostPostFrames" " 3"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Helmet_grp|Phoenix1_SKM:Helmet|Phoenix1_SKM:HelmetShape" 
+		"ghostsStep" " 4"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Helmet_grp|Phoenix1_SKM:Helmet|Phoenix1_SKM:HelmetShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Helmet_grp|Phoenix1_SKM:Helmet|Phoenix1_SKM:HelmetShape" 
+		"ghostOpacityRange" " -type \"float2\" 0.15000000999999999 0.5"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Helmet_grp|Phoenix1_SKM:Helmet|Phoenix1_SKM:HelmetShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Helmet_grp|Phoenix1_SKM:Helmet|Phoenix1_SKM:HelmetShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Helmet_grp|Phoenix1_SKM:Helmet_Back_Strip|Phoenix1_SKM:Helmet_Back_StripShape" 
+		"ghosting" " 1"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Helmet_grp|Phoenix1_SKM:Helmet_Back_Strip|Phoenix1_SKM:Helmet_Back_StripShape" 
+		"ghostingMode" " 0"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Helmet_grp|Phoenix1_SKM:Helmet_Back_Strip|Phoenix1_SKM:Helmet_Back_StripShape" 
+		"ghostPreFrames" " 3"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Helmet_grp|Phoenix1_SKM:Helmet_Back_Strip|Phoenix1_SKM:Helmet_Back_StripShape" 
+		"ghostPostFrames" " 3"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Helmet_grp|Phoenix1_SKM:Helmet_Back_Strip|Phoenix1_SKM:Helmet_Back_StripShape" 
+		"ghostsStep" " 4"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Helmet_grp|Phoenix1_SKM:Helmet_Back_Strip|Phoenix1_SKM:Helmet_Back_StripShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Helmet_grp|Phoenix1_SKM:Helmet_Back_Strip|Phoenix1_SKM:Helmet_Back_StripShape" 
+		"ghostOpacityRange" " -type \"float2\" 0.15000000999999999 0.5"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Helmet_grp|Phoenix1_SKM:Helmet_Back_Strip|Phoenix1_SKM:Helmet_Back_StripShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Helmet_grp|Phoenix1_SKM:Helmet_Back_Strip|Phoenix1_SKM:Helmet_Back_StripShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Helmet_grp|Phoenix1_SKM:Helmet_Bottom_Strip|Phoenix1_SKM:Helmet_Bottom_StripShape" 
+		"ghosting" " 1"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Helmet_grp|Phoenix1_SKM:Helmet_Bottom_Strip|Phoenix1_SKM:Helmet_Bottom_StripShape" 
+		"ghostingMode" " 0"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Helmet_grp|Phoenix1_SKM:Helmet_Bottom_Strip|Phoenix1_SKM:Helmet_Bottom_StripShape" 
+		"ghostPreFrames" " 3"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Helmet_grp|Phoenix1_SKM:Helmet_Bottom_Strip|Phoenix1_SKM:Helmet_Bottom_StripShape" 
+		"ghostPostFrames" " 3"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Helmet_grp|Phoenix1_SKM:Helmet_Bottom_Strip|Phoenix1_SKM:Helmet_Bottom_StripShape" 
+		"ghostsStep" " 4"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Helmet_grp|Phoenix1_SKM:Helmet_Bottom_Strip|Phoenix1_SKM:Helmet_Bottom_StripShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Helmet_grp|Phoenix1_SKM:Helmet_Bottom_Strip|Phoenix1_SKM:Helmet_Bottom_StripShape" 
+		"ghostOpacityRange" " -type \"float2\" 0.15000000999999999 0.5"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Helmet_grp|Phoenix1_SKM:Helmet_Bottom_Strip|Phoenix1_SKM:Helmet_Bottom_StripShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Helmet_grp|Phoenix1_SKM:Helmet_Bottom_Strip|Phoenix1_SKM:Helmet_Bottom_StripShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Body|Phoenix1_SKM:BodyShape" 
+		"ghosting" " 1"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Body|Phoenix1_SKM:BodyShape" 
+		"ghostingMode" " 0"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Body|Phoenix1_SKM:BodyShape" 
+		"ghostPreFrames" " 3"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Body|Phoenix1_SKM:BodyShape" 
+		"ghostPostFrames" " 3"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Body|Phoenix1_SKM:BodyShape" 
+		"ghostsStep" " 4"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Body|Phoenix1_SKM:BodyShape" 
+		"ghostFrames" " -type \"Int32Array\" 0"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Body|Phoenix1_SKM:BodyShape" 
+		"ghostOpacityRange" " -type \"float2\" 0.15000000999999999 0.5"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Body|Phoenix1_SKM:BodyShape" 
+		"ghostColorPre" " -type \"float3\" 0.447 1 1"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Geometry_grp|Phoenix1_SKM:Body|Phoenix1_SKM:BodyShape" 
+		"ghostColorPost" " -type \"float3\" 0.87800001999999999 0.67799997000000001 0.66299998999999998"
+		
 		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Transform_ctrl_grp|Phoenix1_SKM:Transform_ctrl" 
 		"L_Leg_IKFK" " -k 1 0"
 		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Transform_ctrl_grp|Phoenix1_SKM:Transform_ctrl" 
@@ -632,6 +721,10 @@ createNode reference -n "Phoenix1_SKMRN";
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Arms_Ctrl_grp|Phoenix1_SKM:R_Arm_Ctrl_grp|Phoenix1_SKM:R_Arm_FK_Ctrl_grp|Phoenix1_SKM:R_Arm_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Arm_02_FK_jnt_ctrl" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Arms_Ctrl_grp|Phoenix1_SKM:R_Arm_Ctrl_grp|Phoenix1_SKM:R_Arm_FK_Ctrl_grp|Phoenix1_SKM:R_Arm_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Arm_03_FK_jnt_ctrl" 
+		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl" 
+		"FootRoll" " -k 1"
 		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl" 
 		"FootRoll" " -k 1"
 		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_02_FK_jnt_ctrl" 
@@ -692,6 +785,7 @@ createNode reference -n "Phoenix1_SKMRN";
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
 		2 "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_03_FK_jnt_ctrl" 
 		"rotatePivotTranslate" " -type \"double3\" 0 0 0"
+		2 "Phoenix1_SKM:Geometry_Layer" "displayType" " 2"
 		2 "Phoenix1_SKM:Controls_Layer" "visibility" " 1"
 		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Transform_ctrl_grp|Phoenix1_SKM:Transform_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[1]" ""
@@ -927,580 +1021,582 @@ createNode reference -n "Phoenix1_SKMRN";
 		"Phoenix1_SKMRN.placeHolderList[116]" ""
 		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_Base_ctrl_grp|Phoenix1_SKM:L_Leg_IK_Base_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[117]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl.FootRoll" 
 		"Phoenix1_SKMRN.placeHolderList[118]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[119]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[120]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[121]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[122]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[123]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[124]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[125]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[126]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[127]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[128]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[129]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[130]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[131]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[132]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[133]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[134]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[135]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[136]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[137]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[138]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[139]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[140]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[141]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[142]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[143]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[144]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[145]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[146]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[147]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_ctrl|Phoenix1_SKM:L_Foot_IK_Ball_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Ball_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Ball_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Ball_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[148]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_ctrl|Phoenix1_SKM:L_Foot_IK_Ball_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Ball_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Ball_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Ball_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_ctrl|Phoenix1_SKM:L_Foot_IK_Ball_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Ball_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Ball_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Ball_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[149]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_ctrl|Phoenix1_SKM:L_Foot_IK_Ball_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Ball_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Ball_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Ball_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_ctrl|Phoenix1_SKM:L_Foot_IK_Ball_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Ball_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Ball_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Ball_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[150]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_ctrl|Phoenix1_SKM:L_Foot_IK_Ball_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Ball_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Ball_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Ball_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_ctrl|Phoenix1_SKM:L_Foot_IK_Ball_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Ball_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Ball_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Ball_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[151]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_ctrl|Phoenix1_SKM:L_Foot_IK_Ball_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Ball_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Ball_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Ball_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_ctrl|Phoenix1_SKM:L_Foot_IK_Ball_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Ball_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Ball_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Ball_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[152]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_ctrl|Phoenix1_SKM:L_Foot_IK_Ball_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Ball_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Ball_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Ball_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_ctrl|Phoenix1_SKM:L_Foot_IK_Ball_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Ball_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Ball_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Ball_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[153]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_Tap_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Tap_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Tap_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_ctrl|Phoenix1_SKM:L_Foot_IK_Ball_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Ball_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Ball_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Ball_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[154]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_Tap_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Tap_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Tap_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_Tap_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Tap_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Tap_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[155]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_Tap_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Tap_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Tap_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_Tap_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Tap_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Tap_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[156]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_Tap_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Tap_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Tap_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_Tap_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Tap_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Tap_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[157]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_Tap_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Tap_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Tap_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_Tap_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Tap_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Tap_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[158]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_Tap_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Tap_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Tap_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_Tap_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Tap_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Tap_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[159]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_PV_ctrl_grp|Phoenix1_SKM:L_Leg_PV_Offset_grp|Phoenix1_SKM:L_Leg_PV_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl_grp|Phoenix1_SKM:L_Leg_IK_ctrl|Phoenix1_SKM:L_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Out_ctrl|Phoenix1_SKM:L_Foot_IK_In_ctlr_grp|Phoenix1_SKM:L_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_In_ctrl|Phoenix1_SKM:L_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Heel_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_ctrl|Phoenix1_SKM:L_Foot_IK_Toe_Tap_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Tap_Offset_ctrl_grp|Phoenix1_SKM:L_Foot_IK_Toe_Tap_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[160]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_PV_ctrl_grp|Phoenix1_SKM:L_Leg_PV_Offset_grp|Phoenix1_SKM:L_Leg_PV_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_PV_ctrl_grp|Phoenix1_SKM:L_Leg_PV_Offset_grp|Phoenix1_SKM:L_Leg_PV_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[161]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_PV_ctrl_grp|Phoenix1_SKM:L_Leg_PV_Offset_grp|Phoenix1_SKM:L_Leg_PV_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_PV_ctrl_grp|Phoenix1_SKM:L_Leg_PV_Offset_grp|Phoenix1_SKM:L_Leg_PV_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[162]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_Base_ctrl_grp|Phoenix1_SKM:R_Leg_IK_Base_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:L_Leg_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Ctrl_grp|Phoenix1_SKM:L_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:L_Leg_PV_ctrl_grp|Phoenix1_SKM:L_Leg_PV_Offset_grp|Phoenix1_SKM:L_Leg_PV_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[163]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_Base_ctrl_grp|Phoenix1_SKM:R_Leg_IK_Base_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_Base_ctrl_grp|Phoenix1_SKM:R_Leg_IK_Base_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[164]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_Base_ctrl_grp|Phoenix1_SKM:R_Leg_IK_Base_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_Base_ctrl_grp|Phoenix1_SKM:R_Leg_IK_Base_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[165]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl.FootRoll" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_Base_ctrl_grp|Phoenix1_SKM:R_Leg_IK_Base_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[166]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl.FootRoll" 
 		"Phoenix1_SKMRN.placeHolderList[167]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[168]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[169]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[170]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[171]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[172]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[173]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[174]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[175]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[176]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[177]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[178]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[179]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[180]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[181]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[182]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[183]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[184]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[185]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[186]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[187]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[188]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[189]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[190]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[191]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[192]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[193]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[194]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[195]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[196]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_ctrl|Phoenix1_SKM:R_Foot_IK_Ball_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Ball_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Ball_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Ball_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[197]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_ctrl|Phoenix1_SKM:R_Foot_IK_Ball_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Ball_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Ball_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Ball_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_ctrl|Phoenix1_SKM:R_Foot_IK_Ball_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Ball_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Ball_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Ball_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[198]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_ctrl|Phoenix1_SKM:R_Foot_IK_Ball_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Ball_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Ball_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Ball_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_ctrl|Phoenix1_SKM:R_Foot_IK_Ball_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Ball_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Ball_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Ball_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[199]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_ctrl|Phoenix1_SKM:R_Foot_IK_Ball_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Ball_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Ball_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Ball_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_ctrl|Phoenix1_SKM:R_Foot_IK_Ball_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Ball_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Ball_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Ball_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[200]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_ctrl|Phoenix1_SKM:R_Foot_IK_Ball_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Ball_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Ball_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Ball_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_ctrl|Phoenix1_SKM:R_Foot_IK_Ball_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Ball_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Ball_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Ball_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[201]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_ctrl|Phoenix1_SKM:R_Foot_IK_Ball_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Ball_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Ball_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Ball_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_ctrl|Phoenix1_SKM:R_Foot_IK_Ball_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Ball_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Ball_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Ball_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[202]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_Tap_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Tap_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Tap_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_ctrl|Phoenix1_SKM:R_Foot_IK_Ball_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Ball_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Ball_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Ball_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[203]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_Tap_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Tap_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Tap_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_Tap_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Tap_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Tap_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[204]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_Tap_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Tap_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Tap_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_Tap_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Tap_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Tap_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[205]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_Tap_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Tap_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Tap_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_Tap_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Tap_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Tap_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[206]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_Tap_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Tap_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Tap_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_Tap_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Tap_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Tap_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[207]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_Tap_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Tap_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Tap_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_Tap_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Tap_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Tap_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[208]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_PV_ctrl_grp|Phoenix1_SKM:R_Leg_PV_Offset_grp|Phoenix1_SKM:R_Leg_PV_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl_grp|Phoenix1_SKM:R_Leg_IK_ctrl|Phoenix1_SKM:R_Foot_IK_Out_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Out_ctrl|Phoenix1_SKM:R_Foot_IK_In_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_In_ctrl|Phoenix1_SKM:R_Foot_IK_Heel_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Heel_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Offset_02_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_ctrl|Phoenix1_SKM:R_Foot_IK_Toe_Tap_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Tap_Offset_ctrl_grp|Phoenix1_SKM:R_Foot_IK_Toe_Tap_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[209]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_PV_ctrl_grp|Phoenix1_SKM:R_Leg_PV_Offset_grp|Phoenix1_SKM:R_Leg_PV_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_PV_ctrl_grp|Phoenix1_SKM:R_Leg_PV_Offset_grp|Phoenix1_SKM:R_Leg_PV_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[210]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_PV_ctrl_grp|Phoenix1_SKM:R_Leg_PV_Offset_grp|Phoenix1_SKM:R_Leg_PV_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_PV_ctrl_grp|Phoenix1_SKM:R_Leg_PV_Offset_grp|Phoenix1_SKM:R_Leg_PV_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[211]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Hand_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Hand_FK_jnt_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Legs_Ctrl_grp|Phoenix1_SKM:R_Leg_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Ctrl_grp|Phoenix1_SKM:R_Leg_IK_Main_ctrl_grp|Phoenix1_SKM:R_Leg_PV_ctrl_grp|Phoenix1_SKM:R_Leg_PV_Offset_grp|Phoenix1_SKM:R_Leg_PV_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[212]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Hand_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Hand_FK_jnt_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Hand_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Hand_FK_jnt_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[213]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Hand_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Hand_FK_jnt_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Hand_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Hand_FK_jnt_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[214]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Hand_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Hand_FK_jnt_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Hand_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Hand_FK_jnt_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[215]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Hand_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Hand_FK_jnt_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Hand_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Hand_FK_jnt_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[216]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Hand_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Hand_FK_jnt_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Hand_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Hand_FK_jnt_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[217]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_01_FK_jnt_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Hand_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Hand_FK_jnt_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[218]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_01_FK_jnt_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_01_FK_jnt_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[219]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_01_FK_jnt_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_01_FK_jnt_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[220]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_01_FK_jnt_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_01_FK_jnt_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[221]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_01_FK_jnt_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_01_FK_jnt_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[222]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_01_FK_jnt_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_01_FK_jnt_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[223]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_02_FK_jnt_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_01_FK_jnt_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[224]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_02_FK_jnt_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_02_FK_jnt_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[225]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_02_FK_jnt_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_02_FK_jnt_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[226]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_02_FK_jnt_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_02_FK_jnt_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[227]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_02_FK_jnt_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_02_FK_jnt_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[228]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_02_FK_jnt_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_02_FK_jnt_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[229]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_03_FK_jnt_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_02_FK_jnt_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[230]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_03_FK_jnt_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_03_FK_jnt_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[231]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_03_FK_jnt_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_03_FK_jnt_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[232]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_03_FK_jnt_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_03_FK_jnt_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[233]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_03_FK_jnt_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_03_FK_jnt_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[234]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_03_FK_jnt_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_03_FK_jnt_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[235]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_01_FK_jnt_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Thumb_Knuckle_03_FK_jnt_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[236]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_01_FK_jnt_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_01_FK_jnt_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[237]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_01_FK_jnt_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_01_FK_jnt_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[238]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_01_FK_jnt_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_01_FK_jnt_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[239]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_01_FK_jnt_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_01_FK_jnt_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[240]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_01_FK_jnt_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_01_FK_jnt_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[241]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_02_FK_jnt_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_01_FK_jnt_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[242]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_02_FK_jnt_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_02_FK_jnt_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[243]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_02_FK_jnt_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_02_FK_jnt_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[244]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_02_FK_jnt_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_02_FK_jnt_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[245]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_02_FK_jnt_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_02_FK_jnt_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[246]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_02_FK_jnt_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_02_FK_jnt_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[247]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_03_FK_jnt_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_02_FK_jnt_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[248]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_03_FK_jnt_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_03_FK_jnt_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[249]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_03_FK_jnt_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_03_FK_jnt_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[250]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_03_FK_jnt_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_03_FK_jnt_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[251]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_03_FK_jnt_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_03_FK_jnt_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[252]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_03_FK_jnt_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_03_FK_jnt_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[253]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_01_FK_jnt_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_01_Knuckle_03_FK_jnt_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[254]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_01_FK_jnt_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_01_FK_jnt_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[255]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_01_FK_jnt_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_01_FK_jnt_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[256]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_01_FK_jnt_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_01_FK_jnt_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[257]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_01_FK_jnt_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_01_FK_jnt_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[258]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_01_FK_jnt_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_01_FK_jnt_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[259]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_02_FK_jnt_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_01_FK_jnt_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[260]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_02_FK_jnt_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_02_FK_jnt_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[261]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_02_FK_jnt_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_02_FK_jnt_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[262]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_02_FK_jnt_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_02_FK_jnt_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[263]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_02_FK_jnt_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_02_FK_jnt_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[264]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_02_FK_jnt_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_02_FK_jnt_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[265]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_03_FK_jnt_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_02_FK_jnt_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[266]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_03_FK_jnt_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_03_FK_jnt_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[267]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_03_FK_jnt_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_03_FK_jnt_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[268]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_03_FK_jnt_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_03_FK_jnt_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[269]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_03_FK_jnt_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_03_FK_jnt_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[270]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_03_FK_jnt_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_03_FK_jnt_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[271]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_01_FK_jnt_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_02_Knuckle_03_FK_jnt_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[272]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_01_FK_jnt_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_01_FK_jnt_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[273]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_01_FK_jnt_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_01_FK_jnt_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[274]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_01_FK_jnt_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_01_FK_jnt_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[275]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_01_FK_jnt_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_01_FK_jnt_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[276]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_01_FK_jnt_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_01_FK_jnt_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[277]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_02_FK_jnt_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_01_FK_jnt_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[278]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_02_FK_jnt_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_02_FK_jnt_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[279]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_02_FK_jnt_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_02_FK_jnt_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[280]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_02_FK_jnt_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_02_FK_jnt_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[281]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_02_FK_jnt_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_02_FK_jnt_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[282]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_02_FK_jnt_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_02_FK_jnt_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[283]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_03_FK_jnt_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_02_FK_jnt_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[284]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_03_FK_jnt_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_03_FK_jnt_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[285]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_03_FK_jnt_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_03_FK_jnt_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[286]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_03_FK_jnt_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_03_FK_jnt_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[287]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_03_FK_jnt_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_03_FK_jnt_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[288]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_03_FK_jnt_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_03_FK_jnt_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[289]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_01_FK_jnt_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_03_Knuckle_03_FK_jnt_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[290]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_01_FK_jnt_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_01_FK_jnt_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[291]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_01_FK_jnt_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_01_FK_jnt_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[292]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_01_FK_jnt_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_01_FK_jnt_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[293]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_01_FK_jnt_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_01_FK_jnt_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[294]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_01_FK_jnt_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_01_FK_jnt_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[295]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_02_FK_jnt_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_01_FK_jnt_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[296]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_02_FK_jnt_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_02_FK_jnt_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[297]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_02_FK_jnt_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_02_FK_jnt_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[298]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_02_FK_jnt_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_02_FK_jnt_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[299]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_02_FK_jnt_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_02_FK_jnt_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[300]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_02_FK_jnt_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_02_FK_jnt_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[301]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_03_FK_jnt_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_02_FK_jnt_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[302]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_03_FK_jnt_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_03_FK_jnt_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[303]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_03_FK_jnt_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_03_FK_jnt_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[304]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_03_FK_jnt_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_03_FK_jnt_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[305]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_03_FK_jnt_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_03_FK_jnt_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[306]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_03_FK_jnt_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_03_FK_jnt_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[307]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Hand_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Hand_FK_jnt_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:L_Hand_Ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:L_Finger_04_Knuckle_03_FK_jnt_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[308]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Hand_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Hand_FK_jnt_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Hand_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Hand_FK_jnt_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[309]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Hand_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Hand_FK_jnt_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Hand_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Hand_FK_jnt_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[310]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Hand_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Hand_FK_jnt_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Hand_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Hand_FK_jnt_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[311]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Hand_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Hand_FK_jnt_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Hand_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Hand_FK_jnt_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[312]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Hand_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Hand_FK_jnt_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Hand_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Hand_FK_jnt_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[313]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_01_FK_jnt_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Hand_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Hand_FK_jnt_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[314]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_01_FK_jnt_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_01_FK_jnt_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[315]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_01_FK_jnt_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_01_FK_jnt_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[316]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_01_FK_jnt_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_01_FK_jnt_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[317]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_01_FK_jnt_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_01_FK_jnt_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[318]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_01_FK_jnt_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_01_FK_jnt_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[319]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_02_FK_jnt_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_01_FK_jnt_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[320]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_02_FK_jnt_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_02_FK_jnt_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[321]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_02_FK_jnt_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_02_FK_jnt_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[322]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_02_FK_jnt_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_02_FK_jnt_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[323]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_02_FK_jnt_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_02_FK_jnt_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[324]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_02_FK_jnt_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_02_FK_jnt_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[325]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_03_FK_jnt_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_02_FK_jnt_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[326]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_03_FK_jnt_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_03_FK_jnt_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[327]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_03_FK_jnt_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_03_FK_jnt_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[328]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_03_FK_jnt_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_03_FK_jnt_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[329]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_03_FK_jnt_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_03_FK_jnt_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[330]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_03_FK_jnt_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_03_FK_jnt_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[331]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_01_FK_jnt_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Thumb_Knuckle_03_FK_jnt_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[332]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_01_FK_jnt_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_01_FK_jnt_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[333]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_01_FK_jnt_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_01_FK_jnt_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[334]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_01_FK_jnt_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_01_FK_jnt_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[335]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_01_FK_jnt_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_01_FK_jnt_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[336]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_01_FK_jnt_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_01_FK_jnt_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[337]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_02_FK_jnt_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_01_FK_jnt_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[338]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_02_FK_jnt_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_02_FK_jnt_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[339]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_02_FK_jnt_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_02_FK_jnt_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[340]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_02_FK_jnt_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_02_FK_jnt_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[341]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_02_FK_jnt_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_02_FK_jnt_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[342]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_02_FK_jnt_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_02_FK_jnt_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[343]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_03_FK_jnt_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_02_FK_jnt_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[344]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_03_FK_jnt_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_03_FK_jnt_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[345]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_03_FK_jnt_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_03_FK_jnt_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[346]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_03_FK_jnt_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_03_FK_jnt_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[347]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_03_FK_jnt_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_03_FK_jnt_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[348]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_03_FK_jnt_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_03_FK_jnt_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[349]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_01_FK_jnt_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_01_Knuckle_03_FK_jnt_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[350]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_01_FK_jnt_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_01_FK_jnt_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[351]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_01_FK_jnt_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_01_FK_jnt_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[352]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_01_FK_jnt_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_01_FK_jnt_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[353]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_01_FK_jnt_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_01_FK_jnt_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[354]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_01_FK_jnt_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_01_FK_jnt_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[355]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_02_FK_jnt_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_01_FK_jnt_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[356]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_02_FK_jnt_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_02_FK_jnt_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[357]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_02_FK_jnt_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_02_FK_jnt_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[358]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_02_FK_jnt_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_02_FK_jnt_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[359]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_02_FK_jnt_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_02_FK_jnt_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[360]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_02_FK_jnt_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_02_FK_jnt_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[361]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_03_FK_jnt_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_02_FK_jnt_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[362]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_03_FK_jnt_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_03_FK_jnt_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[363]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_03_FK_jnt_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_03_FK_jnt_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[364]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_03_FK_jnt_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_03_FK_jnt_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[365]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_03_FK_jnt_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_03_FK_jnt_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[366]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_03_FK_jnt_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_03_FK_jnt_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[367]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_01_FK_jnt_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_02_Knuckle_03_FK_jnt_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[368]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_01_FK_jnt_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_01_FK_jnt_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[369]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_01_FK_jnt_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_01_FK_jnt_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[370]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_01_FK_jnt_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_01_FK_jnt_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[371]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_01_FK_jnt_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_01_FK_jnt_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[372]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_01_FK_jnt_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_01_FK_jnt_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[373]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_02_FK_jnt_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_01_FK_jnt_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[374]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_02_FK_jnt_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_02_FK_jnt_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[375]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_02_FK_jnt_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_02_FK_jnt_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[376]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_02_FK_jnt_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_02_FK_jnt_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[377]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_02_FK_jnt_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_02_FK_jnt_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[378]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_02_FK_jnt_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_02_FK_jnt_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[379]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_03_FK_jnt_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_02_FK_jnt_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[380]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_03_FK_jnt_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_03_FK_jnt_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[381]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_03_FK_jnt_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_03_FK_jnt_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[382]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_03_FK_jnt_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_03_FK_jnt_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[383]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_03_FK_jnt_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_03_FK_jnt_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[384]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_03_FK_jnt_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_03_FK_jnt_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[385]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_01_FK_jnt_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_03_Knuckle_03_FK_jnt_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[386]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_01_FK_jnt_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_01_FK_jnt_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[387]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_01_FK_jnt_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_01_FK_jnt_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[388]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_01_FK_jnt_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_01_FK_jnt_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[389]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_01_FK_jnt_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_01_FK_jnt_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[390]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_01_FK_jnt_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_01_FK_jnt_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[391]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_02_FK_jnt_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_01_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_01_FK_jnt_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[392]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_02_FK_jnt_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_02_FK_jnt_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[393]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_02_FK_jnt_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_02_FK_jnt_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[394]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_02_FK_jnt_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_02_FK_jnt_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[395]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_02_FK_jnt_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_02_FK_jnt_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[396]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_02_FK_jnt_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_02_FK_jnt_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[397]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_03_FK_jnt_ctrl.translateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_02_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_02_FK_jnt_ctrl.rotateY" 
 		"Phoenix1_SKMRN.placeHolderList[398]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_03_FK_jnt_ctrl.translateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_03_FK_jnt_ctrl.translateX" 
 		"Phoenix1_SKMRN.placeHolderList[399]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_03_FK_jnt_ctrl.translateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_03_FK_jnt_ctrl.translateY" 
 		"Phoenix1_SKMRN.placeHolderList[400]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_03_FK_jnt_ctrl.rotateZ" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_03_FK_jnt_ctrl.translateZ" 
 		"Phoenix1_SKMRN.placeHolderList[401]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_03_FK_jnt_ctrl.rotateX" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_03_FK_jnt_ctrl.rotateZ" 
 		"Phoenix1_SKMRN.placeHolderList[402]" ""
-		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_03_FK_jnt_ctrl.rotateY" 
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_03_FK_jnt_ctrl.rotateX" 
 		"Phoenix1_SKMRN.placeHolderList[403]" ""
+		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Hands_Ctrl_grp|Phoenix1_SKM:R_Hand_Ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_03_FK_jnt_ctrl_grp|Phoenix1_SKM:R_Finger_04_Knuckle_03_FK_jnt_ctrl.rotateY" 
+		"Phoenix1_SKMRN.placeHolderList[404]" ""
 		5 4 "Phoenix1_SKMRN" "|Phoenix1_SKM:Phoenix_1|Phoenix1_SKM:Control_grp|Phoenix1_SKM:Breath_ctrl_grp|Phoenix1_SKM:Breath_ctrl.translateX" 
-		"Phoenix1_SKMRN.placeHolderList[404]" "";
+		"Phoenix1_SKMRN.placeHolderList[405]" "";
 	setAttr ".ptag" -type "string" "";
 lockNode -l 1 ;
 createNode aiOptions -s -n "defaultArnoldRenderOptions";
@@ -1553,9 +1649,8 @@ createNode polyBevel3 -n "polyBevel1";
 createNode polyTweak -n "polyTweak1";
 	rename -uid "5A4B5301-4F3B-94C8-A5C6-19BD5957E817";
 	setAttr ".uopa" yes;
-	setAttr -s 3 ".tk";
-	setAttr ".tk[4]" -type "float3" 0 0.6884647 0 ;
-	setAttr ".tk[5]" -type "float3" 0 0.6884647 0 ;
+	setAttr -s 2 ".tk[4:5]" -type "float3"  0 0.6884647 0 0 0.6884647
+		 0;
 createNode MaterialXSurfaceShader -n "Standard_Surface1";
 	rename -uid "99D5F595-44B6-7A86-3F09-3081A63B3285";
 	setAttr ".up" -type "string" "|materialXStack1|materialXStackShape1,%document1%Standard_Surface1";
@@ -1901,23 +1996,23 @@ createNode animCurveTL -n "COG_FK_jnt_ctrl_translateX";
 	rename -uid "A4B65873-4172-4BBF-58D5-5CB8904789DD";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 -0.237792286084483 40 -0.237792286084483
-		 64 -0.17606687554883216 74 -0.23256054673368531;
-	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
+	setAttr -s 5 ".ktv[0:4]"  0 -0.237792286084483 40 -0.237792286084483
+		 64 -0.17606687554883216 74 -0.47647241063768142 84 -0.63766156883936809;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 18;
 createNode animCurveTL -n "COG_FK_jnt_ctrl_translateY";
 	rename -uid "17DD4D83-4E20-5180-686E-9BA254C2C458";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 1.9598337788044031e-17 40 1.9598337788044031e-17
-		 64 0 74 2.3255268694850712e-17;
-	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
+	setAttr -s 5 ".ktv[0:4]"  0 1.9598337788044031e-17 40 1.9598337788044031e-17
+		 64 0 74 7.7585087151381712e-17 84 0;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 18;
 createNode animCurveTL -n "COG_FK_jnt_ctrl_translateZ";
 	rename -uid "2B22B085-4A03-0BBC-FFEB-B180C86299F2";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 -2.1580973831199716e-17 40 -2.1580973831199716e-17
-		 64 0 74 4.0929501209048601e-18;
-	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
+	setAttr -s 5 ".ktv[0:4]"  0 -2.1580973831199716e-17 40 -2.1580973831199716e-17
+		 64 0 74 2.1743617067649372e-17 84 0;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 18;
 createNode animCurveTL -n "R_Finger_01_Knuckle_01_FK_jnt_ctrl_translateX";
 	rename -uid "B4D25EA8-4FC5-AE35-8A97-CD8138E329DB";
 	setAttr ".tan" 3;
@@ -2105,40 +2200,49 @@ createNode animCurveTL -n "R_Leg_IK_ctrl_translateX";
 	rename -uid "97C6D8C5-4141-A5D0-06C9-7C8C9255D67D";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 -1.0464175738092971 40 -1.0464175738092971
-		 64 -0.78794576983996356 74 -0.16592218216558233;
-	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
+	setAttr -s 5 ".ktv[0:4]"  0 -1.0464175738092971 40 -1.0464175738092971
+		 64 0.6949930881665527 74 -0.14212452047608523 84 0.1005586362966184;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 18;
 createNode animCurveTL -n "R_Leg_IK_ctrl_translateY";
 	rename -uid "4BE3310D-4302-CD02-B1E4-C49A6564D67A";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 64 0 74 -2.2204460492503131e-16;
-	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
+	setAttr -s 5 ".ktv[0:4]"  0 0 40 0 64 0 74 -2.2204460492503131e-16
+		 84 0;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 18;
 createNode animCurveTL -n "R_Leg_IK_ctrl_translateZ";
 	rename -uid "2F0ECB1B-4609-2BE1-9A78-3D8F823292FC";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 0.080597817110745457 40 0.080597817110745457
-		 64 0.62365155771938718 74 -2.6463788223499933;
-	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
+	setAttr -s 5 ".ktv[0:4]"  0 0.080597817110745457 40 0.080597817110745457
+		 64 -0.48609715236280265 74 -3.1304315260622815 84 2.0218107386098216;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 18;
 createNode animCurveTL -n "Transform_ctrl_translateX";
 	rename -uid "3C2335C3-42E8-87DE-D058-B3BE9CB6AE04";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 5 ".ktv[0:4]"  0 0 40 0 64 1.606012759845832 74 1.7662358364474913
+		 84 2.7180949844062159;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 1;
+	setAttr -s 5 ".kix[4]"  1;
+	setAttr -s 5 ".kiy[4]"  0;
 createNode animCurveTL -n "Transform_ctrl_translateY";
 	rename -uid "891BBFB3-4A93-5280-E8A1-F29950C5381E";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 5 ".ktv[0:4]"  0 0 40 0 64 0 74 0 84 0;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 1;
+	setAttr -s 5 ".kix[4]"  1;
+	setAttr -s 5 ".kiy[4]"  0;
 createNode animCurveTL -n "Transform_ctrl_translateZ";
 	rename -uid "B13268E0-477D-86D0-DAFF-C5BC0C79CA3B";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 5 ".ktv[0:4]"  0 0 40 0 64 0.052268732513661723 74 5.493874862776412
+		 84 10.019948274171329;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 1;
+	setAttr -s 5 ".kix[4]"  1;
+	setAttr -s 5 ".kiy[4]"  0;
 createNode animCurveTL -n "L_Arm_03_FK_jnt_ctrl_translateX";
 	rename -uid "58ECA39A-4AF6-0CA9-4DB9-7C88429517AD";
 	setAttr ".tan" 3;
@@ -2195,22 +2299,24 @@ createNode animCurveTL -n "R_Finger_04_Knuckle_01_FK_jnt_ctrl_translateZ";
 	setAttr -s 2 ".kot[0:1]"  5 5;
 createNode animCurveTL -n "L_Leg_PV_ctrl_translateX";
 	rename -uid "2859A512-4B0A-0CB1-1DEB-C7AF6E7EE996";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 3.8085853915070816e-15 40 3.8085853915070816e-15;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 3.8085853915070816e-15 40 3.8085853915070816e-15
+		 74 3.8085853915070816e-15 84 0.38702905321112663;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTL -n "L_Leg_PV_ctrl_translateY";
 	rename -uid "0A0FF2DA-4842-6F35-BCB8-DAB896FC8617";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTL -n "L_Leg_PV_ctrl_translateZ";
 	rename -uid "B572ABFC-40FA-1979-7CB8-FA89BF4ABE11";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 1.3582342715812162e-16 40 1.3582342715812162e-16;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 1.3582342715812162e-16 40 1.3582342715812162e-16
+		 74 1.3582342715812162e-16 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTL -n "L_Hand_FK_jnt_ctrl_translateX";
 	rename -uid "5DAE2F74-4038-4D0B-E8EE-93860001BDE6";
 	setAttr ".tan" 3;
@@ -2521,22 +2627,22 @@ createNode animCurveTL -n "L_Leg_IK_ctrl_translateX";
 	rename -uid "E4D18CA2-4B90-7065-ADC9-BE9564F3DF1B";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 1.1371183212223357 40 1.1371183212223357
-		 64 0.58496189322074255 74 0.50364654701029887;
-	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
+	setAttr -s 5 ".ktv[0:4]"  0 1.1371183212223357 40 1.1371183212223357
+		 64 0.58496189322074255 74 0.55163944230971551 84 0.0087355570838496197;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 18;
 createNode animCurveTL -n "L_Leg_IK_ctrl_translateY";
 	rename -uid "763BFE66-4092-C06D-CFA0-DABBDD4A8A8A";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 64 0 74 -0.014685438109747651;
-	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
+	setAttr -s 5 ".ktv[0:4]"  0 0 40 0 64 0 74 -0.014685438109747428 84 -0.014685438109747206;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 18;
 createNode animCurveTL -n "L_Leg_IK_ctrl_translateZ";
 	rename -uid "2B3A1103-46AB-EAEC-E4A3-0BB82BE02E40";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 -0.90648594228838431 40 -0.90648594228838431
-		 64 -1.4754155223683685 74 1.0049657203558706;
-	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
+	setAttr -s 5 ".ktv[0:4]"  0 -0.90648594228838431 40 -0.90648594228838431
+		 64 -1.4754155223683685 74 1.1220633643283984 84 -3.4574902116600246;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 18;
 createNode animCurveTL -n "R_Leg_IK_Base_ctrl_translateX";
 	rename -uid "82F6C03A-41DC-07BA-1A46-36B4639F3F57";
 	setAttr ".tan" 3;
@@ -2902,256 +3008,277 @@ createNode animCurveTA -n "R_Foot_IK_Heel_ctrl_rotateZ";
 	setAttr -s 2 ".kot[0:1]"  5 5;
 createNode animCurveTA -n "L_Finger_04_Knuckle_03_FK_jnt_ctrl_rotateX";
 	rename -uid "E1CDCCAB-46A2-B96A-4037-CC93B9F7D632";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Finger_04_Knuckle_03_FK_jnt_ctrl_rotateY";
 	rename -uid "C3222F5F-4909-C829-E551-8E8268FCE129";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Finger_04_Knuckle_03_FK_jnt_ctrl_rotateZ";
 	rename -uid "BC0135FF-4C30-F337-F9D5-9FA99CCF7E83";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 37.35229089115667 40 37.35229089115667;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 37.35229089115667 40 37.35229089115667
+		 74 103.61025613904863 84 113.19999620703744;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Finger_03_Knuckle_02_FK_jnt_ctrl_rotateX";
 	rename -uid "967E7FBF-4DC1-FF61-DC00-998437D07604";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Finger_03_Knuckle_02_FK_jnt_ctrl_rotateY";
 	rename -uid "927A28DE-43D2-207C-1D19-00A29B2AB83D";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Finger_03_Knuckle_02_FK_jnt_ctrl_rotateZ";
 	rename -uid "8F1B68D8-4D60-B673-DB16-AE968400B8EB";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 33.56126448216132 40 33.56126448216132;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 33.56126448216132 40 33.56126448216132
+		 74 84.507114696829404 84 108.49417757894351;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Finger_04_Knuckle_01_FK_jnt_ctrl_rotateX";
 	rename -uid "3C7E89E0-431C-12A9-1856-13B3538F6E9B";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 -4.7114864603031705 40 -4.7114864603031705;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 -4.7114864603031705 40 -4.7114864603031705
+		 74 -4.9456414562219084 84 -5.0582416595702995;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Finger_04_Knuckle_01_FK_jnt_ctrl_rotateY";
 	rename -uid "18C6FF7D-4A4E-613A-2683-CEBE862E2763";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 -1.8936697623240342 40 -1.8936697623240342;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 -1.8936697623240342 40 -1.8936697623240342
+		 74 -1.1488747941589164 84 0.43668049189868624;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Finger_04_Knuckle_01_FK_jnt_ctrl_rotateZ";
 	rename -uid "D5CB051F-4E70-748F-6C26-3AAAC9C1B35C";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 37.508332296373105 40 37.508332296373105;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 37.508332296373105 40 37.508332296373105
+		 74 46.310835059774611 84 64.277822904494613;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Finger_03_Knuckle_01_FK_jnt_ctrl_rotateX";
 	rename -uid "429961D2-42FC-9328-8FED-499B8B875D9E";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 -4.7114864603031705 40 -4.7114864603031705;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 -4.7114864603031705 40 -4.7114864603031705
+		 74 -4.8484270406593373 84 -5.7217623164222546;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Finger_03_Knuckle_01_FK_jnt_ctrl_rotateY";
 	rename -uid "CE22E536-4513-406F-1BC7-16A0B517C080";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 -1.8936697623240342 40 -1.8936697623240342;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 -1.8936697623240342 40 -1.8936697623240342
+		 74 -1.508041519248317 84 -0.071302740546110327;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Finger_03_Knuckle_01_FK_jnt_ctrl_rotateZ";
 	rename -uid "91C15AE6-458F-FC15-F766-A19F75DE704D";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 37.508332296373105 40 37.508332296373105;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 37.508332296373105 40 37.508332296373105
+		 74 42.119536686995488 84 58.553897930701311;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Finger_01_Knuckle_01_FK_jnt_ctrl_rotateX";
 	rename -uid "5F9B23FC-44F4-33AB-64B2-E3A0E6CAF2DE";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 2.2123798464039925 40 2.2123798464039925;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 2.2123798464039925 40 2.2123798464039925
+		 74 2.2057179641202955 84 1.0287137729711673;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Finger_01_Knuckle_01_FK_jnt_ctrl_rotateY";
 	rename -uid "54D0EC71-4D69-72B7-EF2E-C68D9608316C";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 -2.4914852621695052 84 -5.0089628244005295;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Finger_01_Knuckle_01_FK_jnt_ctrl_rotateZ";
 	rename -uid "996586F5-479C-AF6A-2E93-5BB44787A1C9";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 28.138317765867324 40 28.138317765867324;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 28.138317765867324 40 28.138317765867324
+		 74 33.141795973118292 84 56.673000650250337;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Finger_04_Knuckle_03_FK_jnt_ctrl_rotateX";
 	rename -uid "9F97057C-4DAF-B356-8FAE-819D4665FD99";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Finger_04_Knuckle_03_FK_jnt_ctrl_rotateY";
 	rename -uid "6E68AE7C-4DC0-8DC3-2336-F2996A70EEB4";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Finger_04_Knuckle_03_FK_jnt_ctrl_rotateZ";
 	rename -uid "5320DD18-48A2-6DEA-0678-A38335A5D46E";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 33.56126448216132 40 33.56126448216132;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 33.56126448216132 40 33.56126448216132
+		 74 93.88588803325365 84 110.12822084013251;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Thumb_Knuckle_03_FK_jnt_ctrl_rotateX";
 	rename -uid "9F20F55B-46B0-4E3E-62EA-68ACB841A12B";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Thumb_Knuckle_03_FK_jnt_ctrl_rotateY";
 	rename -uid "BF319AA5-4AE2-DBD6-5C73-8CA665C03879";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Thumb_Knuckle_03_FK_jnt_ctrl_rotateZ";
 	rename -uid "725640F7-479B-BAAD-95DB-AEB0E706351F";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 35.100997686660683 40 35.100997686660683;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 35.100997686660683 40 35.100997686660683
+		 74 27.195436904498791 84 15.130967678027474;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Thumb_Knuckle_03_FK_jnt_ctrl_rotateX";
 	rename -uid "6D2CE8CB-411F-9704-834E-8B8EB3AD6738";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Thumb_Knuckle_03_FK_jnt_ctrl_rotateY";
 	rename -uid "2A291B10-43D8-9CFC-A903-B0901C73577C";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Thumb_Knuckle_03_FK_jnt_ctrl_rotateZ";
 	rename -uid "E7DC9A57-4679-257A-24BC-4BAA2AAF16FA";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 39.77336484290668 40 39.77336484290668;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 39.773364842906687 40 39.773364842906687
+		 74 43.324823411738777 84 57.766519331124591;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Finger_03_Knuckle_02_FK_jnt_ctrl_rotateX";
 	rename -uid "AAF9DFDA-4A85-FA39-75E7-79851189B316";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Finger_03_Knuckle_02_FK_jnt_ctrl_rotateY";
 	rename -uid "9D55941B-4DFA-290A-35B7-45A444EFD791";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Finger_03_Knuckle_02_FK_jnt_ctrl_rotateZ";
 	rename -uid "873A5BE5-4B05-7750-91D7-29B792B85B66";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 37.35229089115667 40 37.35229089115667;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 37.35229089115667 40 37.35229089115667
+		 74 85.47994553588552 84 103.29071364651001;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Finger_02_Knuckle_03_FK_jnt_ctrl_rotateX";
 	rename -uid "2FF99699-4877-8320-78E4-A59EEEBE2D48";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Finger_02_Knuckle_03_FK_jnt_ctrl_rotateY";
 	rename -uid "FB70F402-4CE7-9613-6E17-F48603A59F6C";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Finger_02_Knuckle_03_FK_jnt_ctrl_rotateZ";
 	rename -uid "A77863D5-48F6-955C-731B-2BACBCC7C28F";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 33.448391194197626 40 33.448391194197626;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 33.448391194197626 40 33.448391194197626
+		 74 95.16988494167046 84 111.54648540933941;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Finger_01_Knuckle_03_FK_jnt_ctrl_rotateX";
 	rename -uid "C9C25B7D-417D-9931-E375-34A9A41AC00E";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Finger_01_Knuckle_03_FK_jnt_ctrl_rotateY";
 	rename -uid "9DD1CE6D-49BF-F3DE-A966-E78C06C486D4";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Finger_01_Knuckle_03_FK_jnt_ctrl_rotateZ";
 	rename -uid "1865853A-49C8-D186-B7B9-F79C3676278B";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 28.13831776586731 40 28.13831776586731;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 28.13831776586731 40 28.13831776586731
+		 74 71.87807037185911 84 88.017763738878074;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Thumb_Knuckle_02_FK_jnt_ctrl_rotateX";
 	rename -uid "5424841C-49A8-CC36-4D19-F69762BB25BC";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Thumb_Knuckle_02_FK_jnt_ctrl_rotateY";
 	rename -uid "549BF10D-48A8-8B1E-BC06-00834FFA680E";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Thumb_Knuckle_02_FK_jnt_ctrl_rotateZ";
 	rename -uid "9FCAAC34-4B87-E78C-5A74-8FA145A87117";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 35.100997686660683 40 35.100997686660683;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 35.100997686660683 40 35.100997686660683
+		 74 43.496730063447473 84 48.425467011213456;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Finger_01_Knuckle_02_FK_jnt_ctrl_rotateX";
 	rename -uid "DD09E9E1-40CF-82B5-6A51-1BA632DDE790";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Finger_01_Knuckle_02_FK_jnt_ctrl_rotateY";
 	rename -uid "9F677C79-40AF-6897-2FCA-5E8F14AE4499";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Finger_01_Knuckle_02_FK_jnt_ctrl_rotateZ";
 	rename -uid "F276AC4B-474F-7D85-BBA0-C2BB1834C83F";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 28.13831776586731 40 28.13831776586731;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 28.13831776586731 40 28.13831776586731
+		 74 86.823239654565015 84 102.96293302158401;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Arm_01_FK_jnt_ctrl_rotateX";
 	rename -uid "C8477BFC-427C-F13E-AFAF-418189D2382C";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 16.411656524112658 40 18.244127832704017;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 16.411656524112658 40 18.244127832704017
+		 74 6.3530915711129454 84 8.1807639875168956;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Arm_01_FK_jnt_ctrl_rotateY";
 	rename -uid "8AFE83D4-48A5-EE48-CD0E-C19C1AC0A5C8";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 -6.2072457175742217 40 -22.457563797899425;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 -6.2072457175742217 40 -22.457563797899425
+		 74 -18.107284262837783 84 -13.819285941957615;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Arm_01_FK_jnt_ctrl_rotateZ";
 	rename -uid "A043FFE6-4E0E-703F-B567-D798D125FB49";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 -4.3310670785675365 40 -11.308281059477764;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 -4.3310670785675365 40 -11.308281059477764
+		 74 18.756216809142302 84 11.312298475568102;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "COG_FK_jnt_ctrl_rotateX";
 	rename -uid "447C9A05-4B07-EDF0-15C0-85BDDB8FACF8";
 	setAttr ".tan" 3;
@@ -3172,40 +3299,42 @@ createNode animCurveTA -n "COG_FK_jnt_ctrl_rotateZ";
 	setAttr -s 2 ".kot[0:1]"  5 5;
 createNode animCurveTA -n "R_Finger_01_Knuckle_01_FK_jnt_ctrl_rotateX";
 	rename -uid "A14F2E1B-4D17-9D77-3464-6391FB12C32D";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 -5.6620907395242615 84 -0.49293435320844975;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Finger_01_Knuckle_01_FK_jnt_ctrl_rotateY";
 	rename -uid "95D0B722-4CBA-F6CB-703E-7DB8F59C261D";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 -2.2374326696099631 84 1.5564002954313072;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Finger_01_Knuckle_01_FK_jnt_ctrl_rotateZ";
 	rename -uid "D726953C-4D53-0942-A766-CA84B485445C";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 19.653085346847007 40 19.653085346847007;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 19.653085346847007 40 19.653085346847007
+		 74 42.793243928743998 84 83.978471736338093;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Finger_03_Knuckle_03_FK_jnt_ctrl_rotateX";
 	rename -uid "294385D4-4B5C-5F9C-0704-ACBE636D4804";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Finger_03_Knuckle_03_FK_jnt_ctrl_rotateY";
 	rename -uid "17182F5E-43D5-373C-493E-F7AEB750B17F";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Finger_03_Knuckle_03_FK_jnt_ctrl_rotateZ";
 	rename -uid "709A0E8F-4917-0642-7445-70A2E733CD16";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 33.56126448216132 40 33.56126448216132;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 33.56126448216132 40 33.56126448216132
+		 74 105.17443571835327 84 108.33922311164511;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Foot_IK_In_ctrl_rotateX";
 	rename -uid "91EE6439-43F3-A2A2-B8A1-938A7CCDCB7B";
 	setAttr ".tan" 3;
@@ -3244,40 +3373,42 @@ createNode animCurveTA -n "R_Foot_IK_Ball_ctrl_rotateZ";
 	setAttr -s 2 ".kot[0:1]"  5 5;
 createNode animCurveTA -n "L_Finger_02_Knuckle_02_FK_jnt_ctrl_rotateX";
 	rename -uid "81CAC6C7-49D1-F2F1-D83C-08ABE6B0E5C6";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Finger_02_Knuckle_02_FK_jnt_ctrl_rotateY";
 	rename -uid "09983D8F-420F-90E1-04A4-9FA1A1C2FCA6";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Finger_02_Knuckle_02_FK_jnt_ctrl_rotateZ";
 	rename -uid "98A6584A-4DC7-B504-4909-26822457F660";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 33.448391194197626 40 33.448391194197626;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 33.448391194197626 40 33.448391194197626
+		 74 80.781701164746792 84 97.158301632415714;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "Pelvis_FK_jnt_ctrl_rotateX";
 	rename -uid "F2AB2902-4727-97F6-77EE-F3A51122411A";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  0 0 40 22.099250746177045 74 0;
-	setAttr -s 3 ".kit[0:2]"  3 3 18;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 22.099250746177045 74 -0.11145350655988991
+		 84 11.354074446904843;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "Pelvis_FK_jnt_ctrl_rotateY";
 	rename -uid "168B66DE-4CEA-E674-FE51-5F9F00CC0FEC";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  0 0 40 0 74 -1.5112021821673807;
-	setAttr -s 3 ".kit[0:2]"  3 3 18;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 9.3741796560206687 84 -3.4882697143930694;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "Pelvis_FK_jnt_ctrl_rotateZ";
 	rename -uid "F316C65E-43DB-3D40-3797-A589DAACD27A";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  0 0 40 0 74 0;
-	setAttr -s 3 ".kit[0:2]"  3 3 18;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 4.1537919440902744 84 1.2468955430341742;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Foot_IK_In_ctrl_rotateX";
 	rename -uid "470B7963-4C03-C93A-D27C-DF8626184E60";
 	setAttr ".tan" 3;
@@ -3298,137 +3429,151 @@ createNode animCurveTA -n "L_Foot_IK_In_ctrl_rotateZ";
 	setAttr -s 2 ".kot[0:1]"  5 5;
 createNode animCurveTA -n "R_Finger_01_Knuckle_02_FK_jnt_ctrl_rotateX";
 	rename -uid "7FC62A10-40A2-9C4F-9913-93A1F8CA0DE7";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Finger_01_Knuckle_02_FK_jnt_ctrl_rotateY";
 	rename -uid "88C2DBAC-4228-2D04-DB31-B993F2AF4DDA";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Finger_01_Knuckle_02_FK_jnt_ctrl_rotateZ";
 	rename -uid "AB166902-428F-0AC2-B22E-119F342730A8";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 19.653085346847007 40 19.653085346847007;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 19.653085346847007 40 19.653085346847007
+		 74 80.87947921911308 84 125.77105154215739;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Clav_FK_jnt_ctrl_rotateX";
 	rename -uid "7191F780-437D-44C3-193A-D09DF3F3D143";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  0 0 40 0.31094723657786988 74 -4.5993014221099973;
-	setAttr -s 3 ".kit[0:2]"  3 3 18;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0.31094723657786988 74 -8.082402189745288
+		 84 4.4007005554481085;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Clav_FK_jnt_ctrl_rotateY";
 	rename -uid "1F0EDFBF-4A70-737A-1337-C38B25E2A91F";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  0 -9.3024578677182106 40 3.7927917041458685
-		 74 15.09020063726296;
-	setAttr -s 3 ".kit[0:2]"  3 3 18;
+	setAttr -s 4 ".ktv[0:3]"  0 -9.3024578677182106 40 3.7927917041458685
+		 74 1.0257074398528023 84 -8.0013729341443796;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Clav_FK_jnt_ctrl_rotateZ";
 	rename -uid "CAAFDB44-4248-F9A0-F4A9-758A3121328F";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  0 11.080873923880302 40 15.771169455604618
-		 74 -6.2130278282249511;
-	setAttr -s 3 ".kit[0:2]"  3 3 18;
+	setAttr -s 4 ".ktv[0:3]"  0 11.080873923880302 40 15.771169455604618
+		 74 1.4180807852198334 84 -10.549891652387624;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Arm_01_FK_jnt_ctrl_rotateX";
 	rename -uid "D5E7C1B6-439C-0E87-4AA0-C4BA01C06C43";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 21.82507661800749 40 19.231979941746864;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 21.82507661800749 40 19.231979941746864
+		 74 31.127779290354976 84 30.733335623817887;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Arm_01_FK_jnt_ctrl_rotateY";
 	rename -uid "39EFC7C5-4F98-EE03-A6AB-F38B4E651541";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 -13.780132185740184 40 -4.764554277817683;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 -13.780132185740184 40 -4.764554277817683
+		 74 -23.132884840060775 84 -20.480086058332624;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Arm_01_FK_jnt_ctrl_rotateZ";
 	rename -uid "BF4845A7-48FA-215C-5203-03A57240763D";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 7.7714285739080005 40 22.05917475968619;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 7.7714285739080005 40 22.05917475968619
+		 74 16.240195376738345 84 15.098951267238682;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Leg_IK_ctrl_rotateX";
 	rename -uid "C2EC3A7F-4B65-AE34-8F66-3B8292FF38F1";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 64 0 74 0;
-	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
+	setAttr -s 5 ".ktv[0:4]"  0 0 40 0 64 0 74 0 84 0;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 18;
 createNode animCurveTA -n "R_Leg_IK_ctrl_rotateY";
 	rename -uid "F4BC490F-4F98-B526-4B78-EF8688AFBEA4";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 -7.8935651659833832 40 -7.8935651659833832
-		 64 25.452575013618098 74 -2.8145873564804558;
-	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
+	setAttr -s 5 ".ktv[0:4]"  0 -7.8935651659833832 40 -7.8935651659833832
+		 64 -53.19086723722134 74 -2.8145873564804558 84 4.4936037594416272;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 18;
 createNode animCurveTA -n "R_Leg_IK_ctrl_rotateZ";
 	rename -uid "1E30FEFB-44BB-FDC5-CBC6-D6BDD3A22DAD";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 64 0 74 0;
-	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
+	setAttr -s 5 ".ktv[0:4]"  0 0 40 0 64 0 74 0 84 0;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 18;
 createNode animCurveTA -n "Transform_ctrl_rotateX";
 	rename -uid "F900114D-440D-5CB0-997E-3A97AB7D1821";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 64 0 74 0;
-	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
+	setAttr -s 5 ".ktv[0:4]"  0 0 40 0 64 0 74 0 84 0;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 1;
+	setAttr -s 5 ".kix[4]"  1;
+	setAttr -s 5 ".kiy[4]"  0;
 createNode animCurveTA -n "Transform_ctrl_rotateY";
 	rename -uid "E34EFD1B-4AD6-3F18-2F43-8BAFB3DD17BD";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 -181.93864543649082 40 -181.939 64 -105.74634569255093
-		 74 2.2178919557774801;
-	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
+	setAttr -s 5 ".ktv[0:4]"  0 -181.93864543649082 40 -181.939 64 -105.74634569255093
+		 74 3.133965460477143 84 3.133965460477143;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 1;
+	setAttr -s 5 ".kix[4]"  1;
+	setAttr -s 5 ".kiy[4]"  0;
 createNode animCurveTA -n "Transform_ctrl_rotateZ";
 	rename -uid "21AE720A-45D5-A562-69D1-61A178392936";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 64 0 74 0;
-	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
+	setAttr -s 5 ".ktv[0:4]"  0 0 40 0 64 0 74 0 84 0;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 1;
+	setAttr -s 5 ".kix[4]"  1;
+	setAttr -s 5 ".kiy[4]"  0;
 createNode animCurveTA -n "L_Arm_03_FK_jnt_ctrl_rotateX";
 	rename -uid "456CE5C1-46A0-27B4-7103-4D846F9D9C62";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  0 85.545747871771638 40 85.545747871771638
-		 64 60.769845091479375;
-	setAttr -s 3 ".kit[0:2]"  3 3 18;
+	setAttr -s 5 ".ktv[0:4]"  0 85.545747871771638 40 85.545747871771638
+		 64 60.769845091479375 74 94.020102795048388 84 73.744356487212642;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 18;
 createNode animCurveTA -n "L_Arm_03_FK_jnt_ctrl_rotateY";
 	rename -uid "F8075C59-4355-D33B-A723-E1804C453F23";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  0 -7.2281149238252187 40 -7.2281149238252187
-		 64 1.8067635739680736;
-	setAttr -s 3 ".kit[0:2]"  3 3 18;
+	setAttr -s 5 ".ktv[0:4]"  0 -7.2281149238252187 40 -7.2281149238252187
+		 64 1.8067635739680736 74 1.0258454207854855 84 -0.94131141131092444;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 18;
 createNode animCurveTA -n "L_Arm_03_FK_jnt_ctrl_rotateZ";
 	rename -uid "97BD6972-4D3F-38E3-C22F-F9A33FBCF39D";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  0 -3.2068453759211084 40 -3.2068453759211084
-		 64 -3.5471875830587001;
-	setAttr -s 3 ".kit[0:2]"  3 3 18;
+	setAttr -s 5 ".ktv[0:4]"  0 -3.2068453759211084 40 -3.2068453759211084
+		 64 -3.5471875830587001 74 7.9386941133735816 84 1.199178624759851;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 18;
 createNode animCurveTA -n "R_Finger_04_Knuckle_01_FK_jnt_ctrl_rotateX";
 	rename -uid "A637C323-4010-1CB0-38F4-A9AEFCC0B3F9";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 -7.7966886136718845 40 -7.7966886136718845;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 -7.7966886136718845 40 -7.7966886136718845
+		 74 -5.7314318566434377 84 -13.324514942686678;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Finger_04_Knuckle_01_FK_jnt_ctrl_rotateY";
 	rename -uid "E655D3BD-4CAA-B7C7-A96E-6C88AACF8BD5";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 -3.4718753696107685 40 -3.4718753696107685;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 -3.4718753696107685 40 -3.4718753696107685
+		 74 1.3865780042437923 84 4.7365436623463095;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Finger_04_Knuckle_01_FK_jnt_ctrl_rotateZ";
 	rename -uid "7EE4357E-47AF-A9DA-FBC2-879520FAC1DB";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 33.943902107416037 40 33.943902107416037;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 33.943902107416037 40 33.943902107416037
+		 74 47.653454159781141 84 89.070900882746244;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Hand_FK_jnt_ctrl_rotateX";
 	rename -uid "FE98B1FD-4D33-216E-8ED1-70A81C156875";
 	setAttr ".tan" 3;
@@ -3451,21 +3596,23 @@ createNode animCurveTA -n "Spine_04_FK_jnt_ctrl_rotateX";
 	rename -uid "221DF94B-4EB1-4390-A90B-9E92D0D684AB";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  0 0 40 6.9925842610456836 74 3.3906532904243765;
-	setAttr -s 3 ".kit[0:2]"  3 3 18;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 6.9925842610456836 74 6.087119904662222
+		 84 0.5181368272206186;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "Spine_04_FK_jnt_ctrl_rotateY";
 	rename -uid "599FD4C3-4000-6726-6478-E384A4578439";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  0 0 40 -2.8430607917994601 74 -2.8430607917994699;
-	setAttr -s 3 ".kit[0:2]"  3 3 18;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 -2.8430607917994606 74 -2.6245824468563117
+		 84 0.69422611421891378;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "Spine_04_FK_jnt_ctrl_rotateZ";
 	rename -uid "C883BE75-474B-4586-3117-B09B8CB9D0B7";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  0 12.566236684672278 40 11.149542338188594
-		 74 11.149542338188605;
-	setAttr -s 3 ".kit[0:2]"  3 3 18;
+	setAttr -s 4 ".ktv[0:3]"  0 12.566236684672278 40 11.149542338188594
+		 74 11.162500134535863 84 11.885324207933259;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Hand_FK_jnt_ctrl_rotateX";
 	rename -uid "AED5C4DA-410A-C4AA-F2F6-569A335CF949";
 	setAttr ".tan" 3;
@@ -3486,58 +3633,61 @@ createNode animCurveTA -n "R_Hand_FK_jnt_ctrl_rotateZ";
 	setAttr -s 2 ".kot[0:1]"  5 5;
 createNode animCurveTA -n "R_Thumb_Knuckle_01_FK_jnt_ctrl_rotateX";
 	rename -uid "C8F47E80-44D1-4A32-1909-8DB3F687FB94";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 2.5611981980678267;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Thumb_Knuckle_01_FK_jnt_ctrl_rotateY";
 	rename -uid "718C4C33-4AE3-814B-F006-E3B4757A4BCE";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 4.7393063324340536 84 21.912011226663246;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Thumb_Knuckle_01_FK_jnt_ctrl_rotateZ";
 	rename -uid "365D15E1-4EA7-1EA0-843D-F5BFC17B63F6";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 28.770004660118808 40 28.770004660118808;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 28.770004660118808 40 28.770004660118808
+		 74 28.770004660118808 84 59.759118528223233;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Finger_01_Knuckle_03_FK_jnt_ctrl_rotateX";
 	rename -uid "5096CDEA-4C34-CC1F-3369-37AB2DE107A0";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Finger_01_Knuckle_03_FK_jnt_ctrl_rotateY";
 	rename -uid "AD0A2822-4A4C-5A24-8995-C19CC1BC123D";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Finger_01_Knuckle_03_FK_jnt_ctrl_rotateZ";
 	rename -uid "263439F3-4C71-9678-A4DB-02BD81AB7213";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 19.653085346847007 40 19.653085346847007;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 19.653085346847007 40 19.653085346847007
+		 74 80.87947921911308 84 93.569222381108375;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Finger_02_Knuckle_02_FK_jnt_ctrl_rotateX";
 	rename -uid "3B3970F4-48DB-AA7D-84FF-A0B15DBEACC2";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Finger_02_Knuckle_02_FK_jnt_ctrl_rotateY";
 	rename -uid "7C40D725-4C2C-B8D6-C619-068F63A4CC9D";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Finger_02_Knuckle_02_FK_jnt_ctrl_rotateZ";
 	rename -uid "A9534739-44B2-B86C-F538-7E82B981221E";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 30.611982397575769 40 30.611982397575769;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 30.611982397575769 40 30.611982397575769
+		 74 85.49877458063844 84 112.15855867137776;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Foot_IK_Toe_Tap_ctrl_rotateX";
 	rename -uid "8AC10D16-4241-0D87-2A35-BD8E3EC6622B";
 	setAttr ".tan" 3;
@@ -3558,116 +3708,124 @@ createNode animCurveTA -n "R_Foot_IK_Toe_Tap_ctrl_rotateZ";
 	setAttr -s 2 ".kot[0:1]"  5 5;
 createNode animCurveTA -n "R_Arm_02_FK_jnt_ctrl_rotateX";
 	rename -uid "D3EA7D23-4067-3088-E954-2DA3FF841A85";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 -9.9533983855116563e-17 40 -0.35663636563725104;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 -9.9533983855116563e-17 40 -0.35663636563725104
+		 74 4.0212444505591944e-16 84 0.79277951405914426;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Arm_02_FK_jnt_ctrl_rotateY";
 	rename -uid "A031FBBC-4E4C-B64E-8A22-C1AA3AF958F0";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 -3.0571154190272534 40 -3.0362615614928683;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 -3.0571154190272534 40 -3.0362615614928683
+		 74 -8.6321233066176628 84 -8.5959162407753755;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Arm_02_FK_jnt_ctrl_rotateZ";
 	rename -uid "6568F72D-4A7F-BE2F-C956-1390A0AE63D0";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 32.972024516775171 40 39.674429189817346;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 32.972024516775171 40 39.674429189817346
+		 74 28.380069052440515 84 23.090688684559158;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "Spine_01_FK_jnt_ctrl_rotateX";
 	rename -uid "36A8FCF1-42B4-E0AE-DE6A-3AB840DCFC5D";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 0 40 16.899988666691645 64 16.873280741101404
-		 74 0.99658042672858149;
-	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
+	setAttr -s 5 ".ktv[0:4]"  0 0 40 16.899988666691645 64 16.873280741101404
+		 74 1.1106503919775359 84 -1.386819326054882;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 18;
 createNode animCurveTA -n "Spine_01_FK_jnt_ctrl_rotateY";
 	rename -uid "0E76A818-4663-65B5-749C-4A8CA578C5A6";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 0 40 0.09153723259066085 64 0.96819758426637348
-		 74 0.9681975842663566;
-	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
+	setAttr -s 5 ".ktv[0:4]"  0 0 40 0.09153723259066085 64 0.96819758426637348
+		 74 0.83488178016641146 84 1.5399843721575106;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 18;
 createNode animCurveTA -n "Spine_01_FK_jnt_ctrl_rotateZ";
 	rename -uid "E2B7B4A2-4755-C06E-A1C8-76A16AA3DF04";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 0.4541104954891238 40 -0.73689128883239874
-		 64 -3.6242261234430755 74 -3.6242261234430591;
-	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
+	setAttr -s 5 ".ktv[0:4]"  0 0.4541104954891238 40 -0.73689128883239874
+		 64 -3.6242261234430755 74 3.6159382022990205 84 3.5988667881816405;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 18;
 createNode animCurveTA -n "R_Finger_02_Knuckle_03_FK_jnt_ctrl_rotateX";
 	rename -uid "86A78B6F-4EB5-C58B-99DE-33A5A43833C1";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Finger_02_Knuckle_03_FK_jnt_ctrl_rotateY";
 	rename -uid "467FFCA8-48C5-129F-3516-EE92F2920ADB";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Finger_02_Knuckle_03_FK_jnt_ctrl_rotateZ";
 	rename -uid "D90AEF07-49E5-FE4B-6DC7-4D86E39AB234";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 30.611982397575769 40 30.611982397575769;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 30.611982397575769 40 30.611982397575769
+		 74 102.47826883909768 84 111.76270608571687;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Finger_03_Knuckle_03_FK_jnt_ctrl_rotateX";
 	rename -uid "92B0F382-4AE6-BD6E-5FC0-A5A3C37F209D";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Finger_03_Knuckle_03_FK_jnt_ctrl_rotateY";
 	rename -uid "26CE5F20-4172-1C4B-F4FB-BB84B4D1929A";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Finger_03_Knuckle_03_FK_jnt_ctrl_rotateZ";
 	rename -uid "677D8CAA-4C9D-EB28-1A30-40920F4A2A08";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 37.35229089115667 40 37.35229089115667;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 37.35229089115667 40 37.35229089115667
+		 74 85.47994553588552 84 103.29071364651001;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "Neck_03_FK_jnt_ctrl_rotateX";
 	rename -uid "F652038D-41AD-0849-34B7-E1ACFA4C440F";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  0 0 40 19.117785166190437 64 24.506853779081169;
-	setAttr -s 3 ".kit[0:2]"  3 3 18;
+	setAttr -s 5 ".ktv[0:4]"  0 0 40 19.117785166190437 64 24.506853779081169
+		 74 7.7323133692040731 84 12.969775607493025;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 18;
 createNode animCurveTA -n "Neck_03_FK_jnt_ctrl_rotateY";
 	rename -uid "13CE3CA5-48A5-6E20-D391-5DB3BCCBED43";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  0 0 40 -5.538592327879198 64 -10.471239535242553;
-	setAttr -s 3 ".kit[0:2]"  3 3 18;
+	setAttr -s 5 ".ktv[0:4]"  0 0 40 -5.538592327879198 64 -10.471239535242553
+		 74 3.0941057574451492 84 -3.289744317275852;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 18;
 createNode animCurveTA -n "Neck_03_FK_jnt_ctrl_rotateZ";
 	rename -uid "1AD7D572-4EBB-D11C-EA38-CEA6E47D5684";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  0 3.8932717048901089 40 2.255147345445522
-		 64 -2.562337655176441;
-	setAttr -s 3 ".kit[0:2]"  3 3 18;
+	setAttr -s 5 ".ktv[0:4]"  0 3.8932717048901089 40 2.255147345445522
+		 64 -2.562337655176441 74 -1.0565156697382365 84 3.3133655259604811;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 18;
 createNode animCurveTA -n "R_Finger_04_Knuckle_02_FK_jnt_ctrl_rotateX";
 	rename -uid "20A8757C-40BD-0895-5C89-EFA3CF9DED61";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Finger_04_Knuckle_02_FK_jnt_ctrl_rotateY";
 	rename -uid "BC25BC11-4DD2-FBB3-3992-F8B15BFA0561";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Finger_04_Knuckle_02_FK_jnt_ctrl_rotateZ";
 	rename -uid "1E5CE9EC-4BC1-4DE0-AAA2-07A83FAC3C55";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 33.56126448216132 40 33.56126448216132;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 33.56126448216132 40 33.56126448216132
+		 74 93.88588803325365 84 118.5930397398012;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Foot_IK_Toe_ctrl_rotateX";
 	rename -uid "40BF59B0-49B4-327F-43B0-EDB8157A8D3C";
 	setAttr ".tan" 3;
@@ -3708,21 +3866,23 @@ createNode animCurveTA -n "Spine_03_FK_jnt_ctrl_rotateX";
 	rename -uid "CA532AAF-4D61-FFA0-D833-11BCA334E89C";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  0 0 40 6.9925842610456836 74 5.7301370189616243;
-	setAttr -s 3 ".kit[0:2]"  3 3 18;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 6.9925842610456836 74 8.2875150452801538
+		 84 4.9255540600556085;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "Spine_03_FK_jnt_ctrl_rotateY";
 	rename -uid "528EDAC8-4DB8-1599-4C09-37BF68920FDB";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  0 0 40 -2.8430607917994566 74 -2.8430607917994606;
-	setAttr -s 3 ".kit[0:2]"  3 3 18;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 -2.8430607917994566 74 -3.9432655509565002
+		 84 -1.9555329249320519;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "Spine_03_FK_jnt_ctrl_rotateZ";
 	rename -uid "CC913600-486B-7947-6B05-3680C51A6105";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  0 3.3556931742876017 40 1.9389988278039418
-		 74 1.9389988278039458;
-	setAttr -s 3 ".kit[0:2]"  3 3 18;
+	setAttr -s 4 ".ktv[0:3]"  0 3.3556931742876017 40 1.9389988278039418
+		 74 4.6400404132869095 84 1.7868923730248114;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Foot_IK_Heel_ctrl_rotateX";
 	rename -uid "EC8D8482-4A54-76FE-CC7C-9DB3651E3049";
 	setAttr ".tan" 3;
@@ -3745,75 +3905,82 @@ createNode animCurveTA -n "L_Leg_IK_ctrl_rotateX";
 	rename -uid "A320639B-43CD-EC1C-5B67-D0B98A7140EF";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 64 0 74 0;
-	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
+	setAttr -s 5 ".ktv[0:4]"  0 0 40 0 64 0 74 0 84 0;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 18;
 createNode animCurveTA -n "L_Leg_IK_ctrl_rotateY";
 	rename -uid "3A2DC73E-4EE1-E621-5870-7CAA67851589";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 16.545750211117927 40 16.545750211117927
-		 64 63.661434048468514 74 31.458301949873491;
-	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
+	setAttr -s 5 ".ktv[0:4]"  0 16.545750211117927 40 16.545750211117927
+		 64 63.661434048468514 74 15.752628415415876 84 7.4801702428922168;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 18;
 createNode animCurveTA -n "L_Leg_IK_ctrl_rotateZ";
 	rename -uid "09B7E0D2-413B-AD2C-D6C3-D28EB56179D9";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 64 0 74 0;
-	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
+	setAttr -s 5 ".ktv[0:4]"  0 0 40 0 64 0 74 0 84 0;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 18;
 createNode animCurveTA -n "R_Finger_02_Knuckle_01_FK_jnt_ctrl_rotateX";
 	rename -uid "04F6E7F8-44D2-AADD-2EB6-81BD9855F67A";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 -4.8549937457408898 40 -4.8549937457408898;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 -4.8549937457408898 40 -4.8549937457408898
+		 74 -4.7031705374362573 84 2.9969968865437062;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Finger_02_Knuckle_01_FK_jnt_ctrl_rotateY";
 	rename -uid "0EEBDE56-4DFC-DDAA-55FD-69A937D95CF0";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 1.987846675914698e-16 40 1.987846675914698e-16;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 1.987846675914698e-16 40 1.987846675914698e-16
+		 74 1.2059931163258659 84 7.4661086335700819;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Finger_02_Knuckle_01_FK_jnt_ctrl_rotateZ";
 	rename -uid "D4E4DBDF-4937-AEE0-E0BC-4490F9F09B53";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 30.61198239757579 40 30.61198239757579;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 30.61198239757579 40 30.61198239757579
+		 74 44.961974279167173 84 88.197381615030935;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Finger_03_Knuckle_01_FK_jnt_ctrl_rotateX";
 	rename -uid "D9236462-44CD-FA08-1513-ADA01E973791";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 -7.7966886136718845 40 -7.7966886136718845;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 -7.7966886136718845 40 -7.7966886136718845
+		 74 -4.7801813260792141 84 -4.4186946181741611;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Finger_03_Knuckle_01_FK_jnt_ctrl_rotateY";
 	rename -uid "49669A98-4625-9AED-6514-B38D731EF89E";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 -3.4718753696107685 40 -3.4718753696107685;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 -3.4718753696107685 40 -3.4718753696107685
+		 74 1.7229328303909439 84 4.05515725301529;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Finger_03_Knuckle_01_FK_jnt_ctrl_rotateZ";
 	rename -uid "5DBE3A17-4B0B-7B3E-0778-74BC621C5C4D";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 33.943902107416037 40 33.943902107416037;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 33.943902107416037 40 33.943902107416037
+		 74 47.792553888996373 84 88.235546199502082;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "Head_FK_jnt_ctrl_rotateX";
 	rename -uid "8D9771B3-41E4-28AC-4046-7AAB865AF33B";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 4.3542566168820001;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 4.3542566168820009 74 -13.634441994767421
+		 84 -13.634441994767421;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "Head_FK_jnt_ctrl_rotateY";
 	rename -uid "90646FB3-48C3-80B1-8A44-56B193D24FE5";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 -1.2948253523672542 84 -1.2948253523672542;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "Head_FK_jnt_ctrl_rotateZ";
 	rename -uid "15F32FA7-4B23-6A30-2074-62BED775274F";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 -5.3223082982126302 84 -5.3223082982126302;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Foot_IK_Out_ctrl_rotateX";
 	rename -uid "8AEA9CA4-401F-4A5E-3F2B-B194E132E60B";
 	setAttr ".tan" 3;
@@ -3836,76 +4003,82 @@ createNode animCurveTA -n "Neck_02_FK_jnt_ctrl_rotateX";
 	rename -uid "0F86E0C7-4ED1-2D94-2629-728A8FB6679E";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  0 0 40 14.744045392256897 64 20.100164526338517;
-	setAttr -s 3 ".kit[0:2]"  3 3 18;
+	setAttr -s 5 ".ktv[0:4]"  0 0 40 14.744045392256897 64 20.100164526338517
+		 74 3.3894604320864694 84 8.6083895728259954;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 18;
 createNode animCurveTA -n "Neck_02_FK_jnt_ctrl_rotateY";
 	rename -uid "28507047-4424-3932-6F74-CCBB52A16897";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  0 0 40 -5.6469205654168961 64 -10.93011246685499;
-	setAttr -s 3 ".kit[0:2]"  3 3 18;
+	setAttr -s 5 ".ktv[0:4]"  0 0 40 -5.6469205654168961 64 -10.93011246685499
+		 74 2.709897903659054 84 -3.3242666860824195;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 18;
 createNode animCurveTA -n "Neck_02_FK_jnt_ctrl_rotateZ";
 	rename -uid "7B0AF737-4716-3DFA-C6B7-5DAFB545612D";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  0 9.6055927493054707 40 8.3939256210179991
-		 64 3.9686057723400809;
-	setAttr -s 3 ".kit[0:2]"  3 3 18;
+	setAttr -s 5 ".ktv[0:4]"  0 9.6055927493054707 40 8.3939256210179991
+		 64 3.9686057723400809 74 4.4358298450398932 84 9.2773990509099828;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 18;
 createNode animCurveTA -n "Neck_01_FK_jnt_ctrl_rotateX";
 	rename -uid "C8DF1413-4F40-DF61-85AD-A5994A32626B";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  0 0 40 14.744045392256922 64 17.602433550827147;
-	setAttr -s 3 ".kit[0:2]"  3 3 18;
+	setAttr -s 5 ".ktv[0:4]"  0 0 40 14.744045392256922 64 17.602433550827147
+		 74 0.58214294939095501 84 0.5827314980659537;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 18;
 createNode animCurveTA -n "Neck_01_FK_jnt_ctrl_rotateY";
 	rename -uid "ADC346C0-4A5E-0E39-62A1-AAA11600D883";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  0 0 40 -5.6469205654168961 64 -5.6469205654168961;
-	setAttr -s 3 ".kit[0:2]"  3 3 18;
+	setAttr -s 5 ".ktv[0:4]"  0 0 40 -5.6469205654168961 64 -5.6469205654168961
+		 74 -1.7821808458661814 84 3.1314648366797617;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 18;
 createNode animCurveTA -n "Neck_01_FK_jnt_ctrl_rotateZ";
 	rename -uid "1C2D677D-4F7D-AB92-DA9B-8D8EE0E02CF6";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  0 13.53976269478145 40 12.328095566493975
-		 64 12.328095566493971;
-	setAttr -s 3 ".kit[0:2]"  3 3 18;
+	setAttr -s 5 ".ktv[0:4]"  0 13.53976269478145 40 12.328095566493975
+		 64 12.328095566493971 74 1.9053626148054741 84 1.9553018942241251;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 18;
 createNode animCurveTA -n "L_Finger_02_Knuckle_01_FK_jnt_ctrl_rotateX";
 	rename -uid "20FA0D65-4442-2BF4-BCD4-CE907AAB9E1E";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Finger_02_Knuckle_01_FK_jnt_ctrl_rotateY";
 	rename -uid "E122ADC7-4205-8934-83DA-FF87EDD76D61";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Finger_02_Knuckle_01_FK_jnt_ctrl_rotateZ";
 	rename -uid "278CFAFA-4FD1-5F75-8004-6FAB2982EB5A";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 33.448391194197626 40 33.448391194197626;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 33.448391194197626 40 33.448391194197626
+		 74 38.787620895838465 84 59.096926300675541;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Thumb_Knuckle_02_FK_jnt_ctrl_rotateX";
 	rename -uid "86C754D0-4972-5CD9-0FEE-56B7C97DD72B";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 -25.99058829505211;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Thumb_Knuckle_02_FK_jnt_ctrl_rotateY";
 	rename -uid "5C7C7C07-49D3-E97D-3B4B-D4A344CF519B";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 -0.290413041710744;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Thumb_Knuckle_02_FK_jnt_ctrl_rotateZ";
 	rename -uid "4009B590-4C06-6302-107C-599077848D78";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 16.309830320000678 40 16.309830320000678;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 16.309830320000678 40 16.309830320000678
+		 74 27.667748424303454 84 32.212591829765003;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Foot_IK_Ball_ctrl_rotateX";
 	rename -uid "52C44CE7-4760-074D-1F89-069448AD6611";
 	setAttr ".tan" 3;
@@ -3944,77 +4117,84 @@ createNode animCurveTA -n "L_Foot_IK_Toe_ctrl_rotateZ";
 	setAttr -s 2 ".kot[0:1]"  5 5;
 createNode animCurveTA -n "R_Arm_03_FK_jnt_ctrl_rotateX";
 	rename -uid "0A8723A7-421F-C42E-A165-C9AC1FFF0FD9";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 100.20338240131933 40 100.20338240131933;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 100.20338240131935 40 100.20338240131935
+		 74 124.58544899878611 84 109.74059490808736;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Arm_03_FK_jnt_ctrl_rotateY";
 	rename -uid "E2783BF0-4AFD-B2AB-8121-F6A7D0746952";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 -4.8406749670715925;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "R_Arm_03_FK_jnt_ctrl_rotateZ";
 	rename -uid "C479CA94-4CE4-0072-BF64-5091E12B97FB";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 -1.9016469823731668;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Thumb_Knuckle_01_FK_jnt_ctrl_rotateX";
 	rename -uid "B54B8CEB-482B-4D44-8BD1-70B5A3E8496B";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 2.8457798172477689;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Thumb_Knuckle_01_FK_jnt_ctrl_rotateY";
 	rename -uid "B91A9D08-453D-0DFB-8282-F0BCFFF2D5E7";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 11.380869347149531 84 11.02387954590184;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Thumb_Knuckle_01_FK_jnt_ctrl_rotateZ";
 	rename -uid "27ED8EE0-4618-FD92-6039-FB9A58D24CBB";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 35.100997686660683 40 35.100997686660683;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 35.100997686660683 40 35.100997686660683
+		 74 26.051166129121885 84 40.623250714643888;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Arm_02_FK_jnt_ctrl_rotateX";
 	rename -uid "767BA323-4EC7-CB1B-EB8B-E4BA86D10831";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 -4.0475315152981941e-16 40 -1.2635235533096778;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 3 ".ktv[0:2]"  0 -4.0475315152981941e-16 40 -1.2635235533096778
+		 84 -0.76356637416974793;
+	setAttr -s 3 ".kit[0:2]"  3 3 18;
 createNode animCurveTA -n "L_Arm_02_FK_jnt_ctrl_rotateY";
 	rename -uid "ED9DEDB7-4BA7-EF72-015A-6A98F2DFCBF0";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 10.810967612475528 40 2.8624648283183034;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 3 ".ktv[0:2]"  0 10.810967612475528 40 2.8624648283183034
+		 84 3.0342016531570613;
+	setAttr -s 3 ".kit[0:2]"  3 3 18;
 createNode animCurveTA -n "L_Arm_02_FK_jnt_ctrl_rotateZ";
 	rename -uid "6E61C48C-4338-B679-D5FB-1586DC312C96";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 23.982079944367317 40 17.29467048146342;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 3 ".ktv[0:2]"  0 23.982079944367317 40 17.29467048146342
+		 84 26.991604689446753;
+	setAttr -s 3 ".kit[0:2]"  3 3 18;
 createNode animCurveTA -n "Spine_02_FK_jnt_ctrl_rotateX";
 	rename -uid "658B3304-4A38-4581-BCE7-C68AEB8D5A3A";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  0 0 40 -3.8805604096814599 64 -3.8800043355887253;
-	setAttr -s 3 ".kit[0:2]"  3 3 18;
+	setAttr -s 5 ".ktv[0:4]"  0 0 40 -3.8805604096814599 64 -3.8800043355887253
+		 74 -3.9100198467261142 84 -7.4236637917524346;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 18;
 createNode animCurveTA -n "Spine_02_FK_jnt_ctrl_rotateY";
 	rename -uid "11C312F1-4E2C-7CCA-D12D-198ACDD65A09";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  0 0 40 0.091537232590661155 64 -0.11269924158295398;
-	setAttr -s 3 ".kit[0:2]"  3 3 18;
+	setAttr -s 5 ".ktv[0:4]"  0 0 40 0.091537232590661155 64 -0.11269924158295398
+		 74 -0.58207938183368535 84 0.75443089526982221;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 18;
 createNode animCurveTA -n "Spine_02_FK_jnt_ctrl_rotateZ";
 	rename -uid "54798AAB-4C28-F807-210A-DC8A095F35DB";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 3 ".ktv[0:2]"  0 0.80116960814884397 40 -0.38983217617267729
-		 64 -3.4002569619059528;
-	setAttr -s 3 ".kit[0:2]"  3 3 18;
+	setAttr -s 5 ".ktv[0:4]"  0 0.80116960814884397 40 -0.38983217617267729
+		 64 -3.4002569619059528 74 1.9170446992303904 84 -1.2897274087332673;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 18;
 createNode animCurveTA -n "L_Foot_IK_Out_ctrl_rotateX";
 	rename -uid "D02BB01B-4347-3BED-C1CE-A38C0D6D30A1";
 	setAttr ".tan" 3;
@@ -4035,52 +4215,58 @@ createNode animCurveTA -n "L_Foot_IK_Out_ctrl_rotateZ";
 	setAttr -s 2 ".kot[0:1]"  5 5;
 createNode animCurveTA -n "L_Finger_04_Knuckle_02_FK_jnt_ctrl_rotateX";
 	rename -uid "2D75BA89-4E79-12E3-A4A9-E7B137B38B83";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Finger_04_Knuckle_02_FK_jnt_ctrl_rotateY";
 	rename -uid "F747EC8C-4194-4BA3-6D56-C499BDD62840";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 0 40 0;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 0 40 0 74 0 84 0;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Finger_04_Knuckle_02_FK_jnt_ctrl_rotateZ";
 	rename -uid "E649B238-46CC-1B84-65DF-2C8286D8E785";
-	setAttr ".tan" 3;
+	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 2 ".ktv[0:1]"  0 37.35229089115667 40 37.35229089115667;
-	setAttr -s 2 ".kot[0:1]"  5 5;
+	setAttr -s 4 ".ktv[0:3]"  0 37.35229089115667 40 37.35229089115667
+		 74 90.189689957436102 84 99.779430025424958;
+	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
 createNode animCurveTA -n "L_Clav_FK_jnt_ctrl_rotateX";
 	rename -uid "462794DB-4904-5EFE-206E-E590564B2787";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 6.7230628253886557 40 6.7230628253886557
-		 64 17.298222704203429 74 0.94889492400960018;
-	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
+	setAttr -s 5 ".ktv[0:4]"  0 6.7230628253886566 40 6.7230628253886566
+		 64 17.298222704203429 74 6.4486831286924691 84 -4.0829650888241478;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 18;
 createNode animCurveTA -n "L_Clav_FK_jnt_ctrl_rotateY";
 	rename -uid "ABB33453-4FB9-B6C0-04C7-5FB565FF7822";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 -9.4543670981403523 40 -9.4543670981403523
-		 64 -13.32535874432439 74 2.8409570313394559;
-	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
+	setAttr -s 5 ".ktv[0:4]"  0 -9.4543670981403523 40 -9.4543670981403523
+		 64 -13.32535874432439 74 2.7267073905981509 84 3.297447306291005;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 18;
 createNode animCurveTA -n "L_Clav_FK_jnt_ctrl_rotateZ";
 	rename -uid "1C83FA30-40EC-E628-234D-6A97CF9E7C60";
 	setAttr ".tan" 5;
 	setAttr ".wgt" no;
-	setAttr -s 4 ".ktv[0:3]"  0 11.747089304594139 40 11.747089304594139
-		 64 10.526710766010924 74 -18.143631223047375;
-	setAttr -s 4 ".kit[0:3]"  3 3 18 18;
+	setAttr -s 5 ".ktv[0:4]"  0 11.747089304594139 40 11.747089304594139
+		 64 10.526710766010924 74 -12.160873234401073 84 -0.8075093563934127;
+	setAttr -s 5 ".kit[0:4]"  3 3 18 18 18;
 createNode animCurveTU -n "R_Leg_IK_ctrl_FootRoll";
 	rename -uid "F4C42377-4832-13E0-186C-E5BE8CBB371E";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr ".ktv[0]"  74 1.632;
-	setAttr ".kot[0]"  5;
+	setAttr -s 3 ".ktv[0:2]"  0 0 74 1.632 84 0;
+	setAttr -s 3 ".kot[0:2]"  5 5 5;
+createNode animCurveTU -n "L_Leg_IK_ctrl_FootRoll";
+	rename -uid "31F73FA4-4259-F434-12C3-EA963C911D9B";
+	setAttr ".tan" 18;
+	setAttr ".wgt" no;
+	setAttr -s 2 ".ktv[0:1]"  74 0 84 2.91;
+	setAttr -s 2 ".kot[0:1]"  5 5;
 select -ne :time1;
-	setAttr ".o" 74;
-	setAttr ".unw" 74;
+	setAttr ".o" 0;
 select -ne :hardwareRenderingGlobals;
 	setAttr ".otfna" -type "stringArray" 22 "NURBS Curves" "NURBS Surfaces" "Polygons" "Subdiv Surface" "Particles" "Particle Instance" "Fluids" "Strokes" "Image Planes" "UI" "Lights" "Cameras" "Locators" "Joints" "IK Handles" "Deformers" "Motion Trails" "Components" "Hair Systems" "Follicles" "Misc. UI" "Ornaments"  ;
 	setAttr ".otfva" -type "Int32Array" 22 0 1 1 1 1 1
@@ -4132,7 +4318,7 @@ select -ne :hardwareRenderGlobals;
 	setAttr ".ctrs" 256;
 	setAttr ".btrs" 512;
 select -ne :ikSystem;
-	setAttr -s 6 ".sol";
+	setAttr -s 4 ".sol";
 connectAttr "Transform_ctrl_translateX.o" "Phoenix1_SKMRN.phl[1]";
 connectAttr "Transform_ctrl_translateY.o" "Phoenix1_SKMRN.phl[2]";
 connectAttr "Transform_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[3]";
@@ -4250,473 +4436,474 @@ connectAttr "R_Arm_03_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[114]";
 connectAttr "L_Leg_IK_Base_ctrl_translateX.o" "Phoenix1_SKMRN.phl[115]";
 connectAttr "L_Leg_IK_Base_ctrl_translateY.o" "Phoenix1_SKMRN.phl[116]";
 connectAttr "L_Leg_IK_Base_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[117]";
-connectAttr "L_Leg_IK_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[118]";
-connectAttr "L_Leg_IK_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[119]";
-connectAttr "L_Leg_IK_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[120]";
-connectAttr "L_Leg_IK_ctrl_translateX.o" "Phoenix1_SKMRN.phl[121]";
-connectAttr "L_Leg_IK_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[122]";
-connectAttr "L_Leg_IK_ctrl_translateY.o" "Phoenix1_SKMRN.phl[123]";
-connectAttr "L_Foot_IK_Out_ctrl_translateX.o" "Phoenix1_SKMRN.phl[124]";
-connectAttr "L_Foot_IK_Out_ctrl_translateY.o" "Phoenix1_SKMRN.phl[125]";
-connectAttr "L_Foot_IK_Out_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[126]";
-connectAttr "L_Foot_IK_Out_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[127]";
-connectAttr "L_Foot_IK_Out_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[128]";
-connectAttr "L_Foot_IK_Out_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[129]";
-connectAttr "L_Foot_IK_In_ctrl_translateX.o" "Phoenix1_SKMRN.phl[130]";
-connectAttr "L_Foot_IK_In_ctrl_translateY.o" "Phoenix1_SKMRN.phl[131]";
-connectAttr "L_Foot_IK_In_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[132]";
-connectAttr "L_Foot_IK_In_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[133]";
-connectAttr "L_Foot_IK_In_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[134]";
-connectAttr "L_Foot_IK_In_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[135]";
-connectAttr "L_Foot_IK_Heel_ctrl_translateX.o" "Phoenix1_SKMRN.phl[136]";
-connectAttr "L_Foot_IK_Heel_ctrl_translateY.o" "Phoenix1_SKMRN.phl[137]";
-connectAttr "L_Foot_IK_Heel_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[138]";
-connectAttr "L_Foot_IK_Heel_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[139]";
-connectAttr "L_Foot_IK_Heel_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[140]";
-connectAttr "L_Foot_IK_Heel_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[141]";
-connectAttr "L_Foot_IK_Toe_ctrl_translateX.o" "Phoenix1_SKMRN.phl[142]";
-connectAttr "L_Foot_IK_Toe_ctrl_translateY.o" "Phoenix1_SKMRN.phl[143]";
-connectAttr "L_Foot_IK_Toe_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[144]";
-connectAttr "L_Foot_IK_Toe_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[145]";
-connectAttr "L_Foot_IK_Toe_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[146]";
-connectAttr "L_Foot_IK_Toe_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[147]";
-connectAttr "L_Foot_IK_Ball_ctrl_translateX.o" "Phoenix1_SKMRN.phl[148]";
-connectAttr "L_Foot_IK_Ball_ctrl_translateY.o" "Phoenix1_SKMRN.phl[149]";
-connectAttr "L_Foot_IK_Ball_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[150]";
-connectAttr "L_Foot_IK_Ball_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[151]";
-connectAttr "L_Foot_IK_Ball_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[152]";
-connectAttr "L_Foot_IK_Ball_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[153]";
-connectAttr "L_Foot_IK_Toe_Tap_ctrl_translateX.o" "Phoenix1_SKMRN.phl[154]";
-connectAttr "L_Foot_IK_Toe_Tap_ctrl_translateY.o" "Phoenix1_SKMRN.phl[155]";
-connectAttr "L_Foot_IK_Toe_Tap_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[156]";
-connectAttr "L_Foot_IK_Toe_Tap_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[157]";
-connectAttr "L_Foot_IK_Toe_Tap_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[158]";
-connectAttr "L_Foot_IK_Toe_Tap_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[159]";
-connectAttr "L_Leg_PV_ctrl_translateX.o" "Phoenix1_SKMRN.phl[160]";
-connectAttr "L_Leg_PV_ctrl_translateY.o" "Phoenix1_SKMRN.phl[161]";
-connectAttr "L_Leg_PV_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[162]";
-connectAttr "R_Leg_IK_Base_ctrl_translateX.o" "Phoenix1_SKMRN.phl[163]";
-connectAttr "R_Leg_IK_Base_ctrl_translateY.o" "Phoenix1_SKMRN.phl[164]";
-connectAttr "R_Leg_IK_Base_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[165]";
-connectAttr "R_Leg_IK_ctrl_FootRoll.o" "Phoenix1_SKMRN.phl[166]";
-connectAttr "R_Leg_IK_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[167]";
-connectAttr "R_Leg_IK_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[168]";
-connectAttr "R_Leg_IK_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[169]";
-connectAttr "R_Leg_IK_ctrl_translateX.o" "Phoenix1_SKMRN.phl[170]";
-connectAttr "R_Leg_IK_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[171]";
-connectAttr "R_Leg_IK_ctrl_translateY.o" "Phoenix1_SKMRN.phl[172]";
-connectAttr "R_Foot_IK_Out_ctrl_translateX.o" "Phoenix1_SKMRN.phl[173]";
-connectAttr "R_Foot_IK_Out_ctrl_translateY.o" "Phoenix1_SKMRN.phl[174]";
-connectAttr "R_Foot_IK_Out_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[175]";
-connectAttr "R_Foot_IK_Out_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[176]";
-connectAttr "R_Foot_IK_Out_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[177]";
-connectAttr "R_Foot_IK_Out_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[178]";
-connectAttr "R_Foot_IK_In_ctrl_translateX.o" "Phoenix1_SKMRN.phl[179]";
-connectAttr "R_Foot_IK_In_ctrl_translateY.o" "Phoenix1_SKMRN.phl[180]";
-connectAttr "R_Foot_IK_In_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[181]";
-connectAttr "R_Foot_IK_In_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[182]";
-connectAttr "R_Foot_IK_In_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[183]";
-connectAttr "R_Foot_IK_In_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[184]";
-connectAttr "R_Foot_IK_Heel_ctrl_translateX.o" "Phoenix1_SKMRN.phl[185]";
-connectAttr "R_Foot_IK_Heel_ctrl_translateY.o" "Phoenix1_SKMRN.phl[186]";
-connectAttr "R_Foot_IK_Heel_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[187]";
-connectAttr "R_Foot_IK_Heel_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[188]";
-connectAttr "R_Foot_IK_Heel_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[189]";
-connectAttr "R_Foot_IK_Heel_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[190]";
-connectAttr "R_Foot_IK_Toe_ctrl_translateX.o" "Phoenix1_SKMRN.phl[191]";
-connectAttr "R_Foot_IK_Toe_ctrl_translateY.o" "Phoenix1_SKMRN.phl[192]";
-connectAttr "R_Foot_IK_Toe_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[193]";
-connectAttr "R_Foot_IK_Toe_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[194]";
-connectAttr "R_Foot_IK_Toe_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[195]";
-connectAttr "R_Foot_IK_Toe_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[196]";
-connectAttr "R_Foot_IK_Ball_ctrl_translateX.o" "Phoenix1_SKMRN.phl[197]";
-connectAttr "R_Foot_IK_Ball_ctrl_translateY.o" "Phoenix1_SKMRN.phl[198]";
-connectAttr "R_Foot_IK_Ball_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[199]";
-connectAttr "R_Foot_IK_Ball_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[200]";
-connectAttr "R_Foot_IK_Ball_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[201]";
-connectAttr "R_Foot_IK_Ball_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[202]";
-connectAttr "R_Foot_IK_Toe_Tap_ctrl_translateX.o" "Phoenix1_SKMRN.phl[203]";
-connectAttr "R_Foot_IK_Toe_Tap_ctrl_translateY.o" "Phoenix1_SKMRN.phl[204]";
-connectAttr "R_Foot_IK_Toe_Tap_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[205]";
-connectAttr "R_Foot_IK_Toe_Tap_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[206]";
-connectAttr "R_Foot_IK_Toe_Tap_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[207]";
-connectAttr "R_Foot_IK_Toe_Tap_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[208]";
-connectAttr "R_Leg_PV_ctrl_translateX.o" "Phoenix1_SKMRN.phl[209]";
-connectAttr "R_Leg_PV_ctrl_translateY.o" "Phoenix1_SKMRN.phl[210]";
-connectAttr "R_Leg_PV_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[211]";
-connectAttr "L_Hand_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[212]";
-connectAttr "L_Hand_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[213]";
-connectAttr "L_Hand_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[214]";
-connectAttr "L_Hand_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[215]";
-connectAttr "L_Hand_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[216]";
-connectAttr "L_Hand_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[217]";
-connectAttr "L_Thumb_Knuckle_01_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[218]"
+connectAttr "L_Leg_IK_ctrl_FootRoll.o" "Phoenix1_SKMRN.phl[118]";
+connectAttr "L_Leg_IK_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[119]";
+connectAttr "L_Leg_IK_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[120]";
+connectAttr "L_Leg_IK_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[121]";
+connectAttr "L_Leg_IK_ctrl_translateX.o" "Phoenix1_SKMRN.phl[122]";
+connectAttr "L_Leg_IK_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[123]";
+connectAttr "L_Leg_IK_ctrl_translateY.o" "Phoenix1_SKMRN.phl[124]";
+connectAttr "L_Foot_IK_Out_ctrl_translateX.o" "Phoenix1_SKMRN.phl[125]";
+connectAttr "L_Foot_IK_Out_ctrl_translateY.o" "Phoenix1_SKMRN.phl[126]";
+connectAttr "L_Foot_IK_Out_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[127]";
+connectAttr "L_Foot_IK_Out_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[128]";
+connectAttr "L_Foot_IK_Out_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[129]";
+connectAttr "L_Foot_IK_Out_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[130]";
+connectAttr "L_Foot_IK_In_ctrl_translateX.o" "Phoenix1_SKMRN.phl[131]";
+connectAttr "L_Foot_IK_In_ctrl_translateY.o" "Phoenix1_SKMRN.phl[132]";
+connectAttr "L_Foot_IK_In_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[133]";
+connectAttr "L_Foot_IK_In_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[134]";
+connectAttr "L_Foot_IK_In_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[135]";
+connectAttr "L_Foot_IK_In_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[136]";
+connectAttr "L_Foot_IK_Heel_ctrl_translateX.o" "Phoenix1_SKMRN.phl[137]";
+connectAttr "L_Foot_IK_Heel_ctrl_translateY.o" "Phoenix1_SKMRN.phl[138]";
+connectAttr "L_Foot_IK_Heel_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[139]";
+connectAttr "L_Foot_IK_Heel_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[140]";
+connectAttr "L_Foot_IK_Heel_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[141]";
+connectAttr "L_Foot_IK_Heel_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[142]";
+connectAttr "L_Foot_IK_Toe_ctrl_translateX.o" "Phoenix1_SKMRN.phl[143]";
+connectAttr "L_Foot_IK_Toe_ctrl_translateY.o" "Phoenix1_SKMRN.phl[144]";
+connectAttr "L_Foot_IK_Toe_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[145]";
+connectAttr "L_Foot_IK_Toe_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[146]";
+connectAttr "L_Foot_IK_Toe_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[147]";
+connectAttr "L_Foot_IK_Toe_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[148]";
+connectAttr "L_Foot_IK_Ball_ctrl_translateX.o" "Phoenix1_SKMRN.phl[149]";
+connectAttr "L_Foot_IK_Ball_ctrl_translateY.o" "Phoenix1_SKMRN.phl[150]";
+connectAttr "L_Foot_IK_Ball_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[151]";
+connectAttr "L_Foot_IK_Ball_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[152]";
+connectAttr "L_Foot_IK_Ball_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[153]";
+connectAttr "L_Foot_IK_Ball_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[154]";
+connectAttr "L_Foot_IK_Toe_Tap_ctrl_translateX.o" "Phoenix1_SKMRN.phl[155]";
+connectAttr "L_Foot_IK_Toe_Tap_ctrl_translateY.o" "Phoenix1_SKMRN.phl[156]";
+connectAttr "L_Foot_IK_Toe_Tap_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[157]";
+connectAttr "L_Foot_IK_Toe_Tap_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[158]";
+connectAttr "L_Foot_IK_Toe_Tap_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[159]";
+connectAttr "L_Foot_IK_Toe_Tap_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[160]";
+connectAttr "L_Leg_PV_ctrl_translateX.o" "Phoenix1_SKMRN.phl[161]";
+connectAttr "L_Leg_PV_ctrl_translateY.o" "Phoenix1_SKMRN.phl[162]";
+connectAttr "L_Leg_PV_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[163]";
+connectAttr "R_Leg_IK_Base_ctrl_translateX.o" "Phoenix1_SKMRN.phl[164]";
+connectAttr "R_Leg_IK_Base_ctrl_translateY.o" "Phoenix1_SKMRN.phl[165]";
+connectAttr "R_Leg_IK_Base_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[166]";
+connectAttr "R_Leg_IK_ctrl_FootRoll.o" "Phoenix1_SKMRN.phl[167]";
+connectAttr "R_Leg_IK_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[168]";
+connectAttr "R_Leg_IK_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[169]";
+connectAttr "R_Leg_IK_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[170]";
+connectAttr "R_Leg_IK_ctrl_translateX.o" "Phoenix1_SKMRN.phl[171]";
+connectAttr "R_Leg_IK_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[172]";
+connectAttr "R_Leg_IK_ctrl_translateY.o" "Phoenix1_SKMRN.phl[173]";
+connectAttr "R_Foot_IK_Out_ctrl_translateX.o" "Phoenix1_SKMRN.phl[174]";
+connectAttr "R_Foot_IK_Out_ctrl_translateY.o" "Phoenix1_SKMRN.phl[175]";
+connectAttr "R_Foot_IK_Out_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[176]";
+connectAttr "R_Foot_IK_Out_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[177]";
+connectAttr "R_Foot_IK_Out_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[178]";
+connectAttr "R_Foot_IK_Out_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[179]";
+connectAttr "R_Foot_IK_In_ctrl_translateX.o" "Phoenix1_SKMRN.phl[180]";
+connectAttr "R_Foot_IK_In_ctrl_translateY.o" "Phoenix1_SKMRN.phl[181]";
+connectAttr "R_Foot_IK_In_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[182]";
+connectAttr "R_Foot_IK_In_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[183]";
+connectAttr "R_Foot_IK_In_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[184]";
+connectAttr "R_Foot_IK_In_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[185]";
+connectAttr "R_Foot_IK_Heel_ctrl_translateX.o" "Phoenix1_SKMRN.phl[186]";
+connectAttr "R_Foot_IK_Heel_ctrl_translateY.o" "Phoenix1_SKMRN.phl[187]";
+connectAttr "R_Foot_IK_Heel_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[188]";
+connectAttr "R_Foot_IK_Heel_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[189]";
+connectAttr "R_Foot_IK_Heel_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[190]";
+connectAttr "R_Foot_IK_Heel_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[191]";
+connectAttr "R_Foot_IK_Toe_ctrl_translateX.o" "Phoenix1_SKMRN.phl[192]";
+connectAttr "R_Foot_IK_Toe_ctrl_translateY.o" "Phoenix1_SKMRN.phl[193]";
+connectAttr "R_Foot_IK_Toe_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[194]";
+connectAttr "R_Foot_IK_Toe_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[195]";
+connectAttr "R_Foot_IK_Toe_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[196]";
+connectAttr "R_Foot_IK_Toe_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[197]";
+connectAttr "R_Foot_IK_Ball_ctrl_translateX.o" "Phoenix1_SKMRN.phl[198]";
+connectAttr "R_Foot_IK_Ball_ctrl_translateY.o" "Phoenix1_SKMRN.phl[199]";
+connectAttr "R_Foot_IK_Ball_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[200]";
+connectAttr "R_Foot_IK_Ball_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[201]";
+connectAttr "R_Foot_IK_Ball_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[202]";
+connectAttr "R_Foot_IK_Ball_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[203]";
+connectAttr "R_Foot_IK_Toe_Tap_ctrl_translateX.o" "Phoenix1_SKMRN.phl[204]";
+connectAttr "R_Foot_IK_Toe_Tap_ctrl_translateY.o" "Phoenix1_SKMRN.phl[205]";
+connectAttr "R_Foot_IK_Toe_Tap_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[206]";
+connectAttr "R_Foot_IK_Toe_Tap_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[207]";
+connectAttr "R_Foot_IK_Toe_Tap_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[208]";
+connectAttr "R_Foot_IK_Toe_Tap_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[209]";
+connectAttr "R_Leg_PV_ctrl_translateX.o" "Phoenix1_SKMRN.phl[210]";
+connectAttr "R_Leg_PV_ctrl_translateY.o" "Phoenix1_SKMRN.phl[211]";
+connectAttr "R_Leg_PV_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[212]";
+connectAttr "L_Hand_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[213]";
+connectAttr "L_Hand_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[214]";
+connectAttr "L_Hand_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[215]";
+connectAttr "L_Hand_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[216]";
+connectAttr "L_Hand_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[217]";
+connectAttr "L_Hand_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[218]";
+connectAttr "L_Thumb_Knuckle_01_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[219]"
 		;
-connectAttr "L_Thumb_Knuckle_01_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[219]"
+connectAttr "L_Thumb_Knuckle_01_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[220]"
 		;
-connectAttr "L_Thumb_Knuckle_01_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[220]"
+connectAttr "L_Thumb_Knuckle_01_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[221]"
 		;
-connectAttr "L_Thumb_Knuckle_01_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[221]"
+connectAttr "L_Thumb_Knuckle_01_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[222]"
 		;
-connectAttr "L_Thumb_Knuckle_01_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[222]"
+connectAttr "L_Thumb_Knuckle_01_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[223]"
 		;
-connectAttr "L_Thumb_Knuckle_01_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[223]"
+connectAttr "L_Thumb_Knuckle_01_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[224]"
 		;
-connectAttr "L_Thumb_Knuckle_02_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[224]"
+connectAttr "L_Thumb_Knuckle_02_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[225]"
 		;
-connectAttr "L_Thumb_Knuckle_02_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[225]"
+connectAttr "L_Thumb_Knuckle_02_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[226]"
 		;
-connectAttr "L_Thumb_Knuckle_02_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[226]"
+connectAttr "L_Thumb_Knuckle_02_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[227]"
 		;
-connectAttr "L_Thumb_Knuckle_02_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[227]"
+connectAttr "L_Thumb_Knuckle_02_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[228]"
 		;
-connectAttr "L_Thumb_Knuckle_02_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[228]"
+connectAttr "L_Thumb_Knuckle_02_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[229]"
 		;
-connectAttr "L_Thumb_Knuckle_02_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[229]"
+connectAttr "L_Thumb_Knuckle_02_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[230]"
 		;
-connectAttr "L_Thumb_Knuckle_03_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[230]"
+connectAttr "L_Thumb_Knuckle_03_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[231]"
 		;
-connectAttr "L_Thumb_Knuckle_03_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[231]"
+connectAttr "L_Thumb_Knuckle_03_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[232]"
 		;
-connectAttr "L_Thumb_Knuckle_03_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[232]"
+connectAttr "L_Thumb_Knuckle_03_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[233]"
 		;
-connectAttr "L_Thumb_Knuckle_03_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[233]"
+connectAttr "L_Thumb_Knuckle_03_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[234]"
 		;
-connectAttr "L_Thumb_Knuckle_03_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[234]"
+connectAttr "L_Thumb_Knuckle_03_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[235]"
 		;
-connectAttr "L_Thumb_Knuckle_03_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[235]"
+connectAttr "L_Thumb_Knuckle_03_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[236]"
 		;
-connectAttr "L_Finger_01_Knuckle_01_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[236]"
+connectAttr "L_Finger_01_Knuckle_01_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[237]"
 		;
-connectAttr "L_Finger_01_Knuckle_01_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[237]"
+connectAttr "L_Finger_01_Knuckle_01_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[238]"
 		;
-connectAttr "L_Finger_01_Knuckle_01_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[238]"
+connectAttr "L_Finger_01_Knuckle_01_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[239]"
 		;
-connectAttr "L_Finger_01_Knuckle_01_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[239]"
+connectAttr "L_Finger_01_Knuckle_01_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[240]"
 		;
-connectAttr "L_Finger_01_Knuckle_01_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[240]"
+connectAttr "L_Finger_01_Knuckle_01_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[241]"
 		;
-connectAttr "L_Finger_01_Knuckle_01_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[241]"
+connectAttr "L_Finger_01_Knuckle_01_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[242]"
 		;
-connectAttr "L_Finger_01_Knuckle_02_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[242]"
+connectAttr "L_Finger_01_Knuckle_02_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[243]"
 		;
-connectAttr "L_Finger_01_Knuckle_02_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[243]"
+connectAttr "L_Finger_01_Knuckle_02_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[244]"
 		;
-connectAttr "L_Finger_01_Knuckle_02_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[244]"
+connectAttr "L_Finger_01_Knuckle_02_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[245]"
 		;
-connectAttr "L_Finger_01_Knuckle_02_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[245]"
+connectAttr "L_Finger_01_Knuckle_02_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[246]"
 		;
-connectAttr "L_Finger_01_Knuckle_02_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[246]"
+connectAttr "L_Finger_01_Knuckle_02_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[247]"
 		;
-connectAttr "L_Finger_01_Knuckle_02_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[247]"
+connectAttr "L_Finger_01_Knuckle_02_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[248]"
 		;
-connectAttr "L_Finger_01_Knuckle_03_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[248]"
+connectAttr "L_Finger_01_Knuckle_03_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[249]"
 		;
-connectAttr "L_Finger_01_Knuckle_03_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[249]"
+connectAttr "L_Finger_01_Knuckle_03_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[250]"
 		;
-connectAttr "L_Finger_01_Knuckle_03_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[250]"
+connectAttr "L_Finger_01_Knuckle_03_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[251]"
 		;
-connectAttr "L_Finger_01_Knuckle_03_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[251]"
+connectAttr "L_Finger_01_Knuckle_03_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[252]"
 		;
-connectAttr "L_Finger_01_Knuckle_03_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[252]"
+connectAttr "L_Finger_01_Knuckle_03_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[253]"
 		;
-connectAttr "L_Finger_01_Knuckle_03_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[253]"
+connectAttr "L_Finger_01_Knuckle_03_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[254]"
 		;
-connectAttr "L_Finger_02_Knuckle_01_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[254]"
+connectAttr "L_Finger_02_Knuckle_01_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[255]"
 		;
-connectAttr "L_Finger_02_Knuckle_01_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[255]"
+connectAttr "L_Finger_02_Knuckle_01_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[256]"
 		;
-connectAttr "L_Finger_02_Knuckle_01_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[256]"
+connectAttr "L_Finger_02_Knuckle_01_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[257]"
 		;
-connectAttr "L_Finger_02_Knuckle_01_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[257]"
+connectAttr "L_Finger_02_Knuckle_01_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[258]"
 		;
-connectAttr "L_Finger_02_Knuckle_01_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[258]"
+connectAttr "L_Finger_02_Knuckle_01_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[259]"
 		;
-connectAttr "L_Finger_02_Knuckle_01_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[259]"
+connectAttr "L_Finger_02_Knuckle_01_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[260]"
 		;
-connectAttr "L_Finger_02_Knuckle_02_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[260]"
+connectAttr "L_Finger_02_Knuckle_02_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[261]"
 		;
-connectAttr "L_Finger_02_Knuckle_02_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[261]"
+connectAttr "L_Finger_02_Knuckle_02_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[262]"
 		;
-connectAttr "L_Finger_02_Knuckle_02_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[262]"
+connectAttr "L_Finger_02_Knuckle_02_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[263]"
 		;
-connectAttr "L_Finger_02_Knuckle_02_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[263]"
+connectAttr "L_Finger_02_Knuckle_02_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[264]"
 		;
-connectAttr "L_Finger_02_Knuckle_02_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[264]"
+connectAttr "L_Finger_02_Knuckle_02_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[265]"
 		;
-connectAttr "L_Finger_02_Knuckle_02_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[265]"
+connectAttr "L_Finger_02_Knuckle_02_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[266]"
 		;
-connectAttr "L_Finger_02_Knuckle_03_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[266]"
+connectAttr "L_Finger_02_Knuckle_03_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[267]"
 		;
-connectAttr "L_Finger_02_Knuckle_03_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[267]"
+connectAttr "L_Finger_02_Knuckle_03_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[268]"
 		;
-connectAttr "L_Finger_02_Knuckle_03_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[268]"
+connectAttr "L_Finger_02_Knuckle_03_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[269]"
 		;
-connectAttr "L_Finger_02_Knuckle_03_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[269]"
+connectAttr "L_Finger_02_Knuckle_03_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[270]"
 		;
-connectAttr "L_Finger_02_Knuckle_03_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[270]"
+connectAttr "L_Finger_02_Knuckle_03_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[271]"
 		;
-connectAttr "L_Finger_02_Knuckle_03_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[271]"
+connectAttr "L_Finger_02_Knuckle_03_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[272]"
 		;
-connectAttr "L_Finger_03_Knuckle_01_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[272]"
+connectAttr "L_Finger_03_Knuckle_01_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[273]"
 		;
-connectAttr "L_Finger_03_Knuckle_01_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[273]"
+connectAttr "L_Finger_03_Knuckle_01_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[274]"
 		;
-connectAttr "L_Finger_03_Knuckle_01_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[274]"
+connectAttr "L_Finger_03_Knuckle_01_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[275]"
 		;
-connectAttr "L_Finger_03_Knuckle_01_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[275]"
+connectAttr "L_Finger_03_Knuckle_01_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[276]"
 		;
-connectAttr "L_Finger_03_Knuckle_01_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[276]"
+connectAttr "L_Finger_03_Knuckle_01_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[277]"
 		;
-connectAttr "L_Finger_03_Knuckle_01_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[277]"
+connectAttr "L_Finger_03_Knuckle_01_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[278]"
 		;
-connectAttr "L_Finger_03_Knuckle_02_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[278]"
+connectAttr "L_Finger_03_Knuckle_02_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[279]"
 		;
-connectAttr "L_Finger_03_Knuckle_02_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[279]"
+connectAttr "L_Finger_03_Knuckle_02_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[280]"
 		;
-connectAttr "L_Finger_03_Knuckle_02_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[280]"
+connectAttr "L_Finger_03_Knuckle_02_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[281]"
 		;
-connectAttr "L_Finger_03_Knuckle_02_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[281]"
+connectAttr "L_Finger_03_Knuckle_02_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[282]"
 		;
-connectAttr "L_Finger_03_Knuckle_02_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[282]"
+connectAttr "L_Finger_03_Knuckle_02_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[283]"
 		;
-connectAttr "L_Finger_03_Knuckle_02_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[283]"
+connectAttr "L_Finger_03_Knuckle_02_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[284]"
 		;
-connectAttr "L_Finger_03_Knuckle_03_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[284]"
+connectAttr "L_Finger_03_Knuckle_03_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[285]"
 		;
-connectAttr "L_Finger_03_Knuckle_03_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[285]"
+connectAttr "L_Finger_03_Knuckle_03_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[286]"
 		;
-connectAttr "L_Finger_03_Knuckle_03_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[286]"
+connectAttr "L_Finger_03_Knuckle_03_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[287]"
 		;
-connectAttr "L_Finger_03_Knuckle_03_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[287]"
+connectAttr "L_Finger_03_Knuckle_03_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[288]"
 		;
-connectAttr "L_Finger_03_Knuckle_03_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[288]"
+connectAttr "L_Finger_03_Knuckle_03_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[289]"
 		;
-connectAttr "L_Finger_03_Knuckle_03_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[289]"
+connectAttr "L_Finger_03_Knuckle_03_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[290]"
 		;
-connectAttr "L_Finger_04_Knuckle_01_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[290]"
+connectAttr "L_Finger_04_Knuckle_01_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[291]"
 		;
-connectAttr "L_Finger_04_Knuckle_01_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[291]"
+connectAttr "L_Finger_04_Knuckle_01_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[292]"
 		;
-connectAttr "L_Finger_04_Knuckle_01_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[292]"
+connectAttr "L_Finger_04_Knuckle_01_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[293]"
 		;
-connectAttr "L_Finger_04_Knuckle_01_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[293]"
+connectAttr "L_Finger_04_Knuckle_01_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[294]"
 		;
-connectAttr "L_Finger_04_Knuckle_01_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[294]"
+connectAttr "L_Finger_04_Knuckle_01_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[295]"
 		;
-connectAttr "L_Finger_04_Knuckle_01_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[295]"
+connectAttr "L_Finger_04_Knuckle_01_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[296]"
 		;
-connectAttr "L_Finger_04_Knuckle_02_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[296]"
+connectAttr "L_Finger_04_Knuckle_02_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[297]"
 		;
-connectAttr "L_Finger_04_Knuckle_02_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[297]"
+connectAttr "L_Finger_04_Knuckle_02_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[298]"
 		;
-connectAttr "L_Finger_04_Knuckle_02_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[298]"
+connectAttr "L_Finger_04_Knuckle_02_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[299]"
 		;
-connectAttr "L_Finger_04_Knuckle_02_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[299]"
+connectAttr "L_Finger_04_Knuckle_02_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[300]"
 		;
-connectAttr "L_Finger_04_Knuckle_02_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[300]"
+connectAttr "L_Finger_04_Knuckle_02_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[301]"
 		;
-connectAttr "L_Finger_04_Knuckle_02_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[301]"
+connectAttr "L_Finger_04_Knuckle_02_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[302]"
 		;
-connectAttr "L_Finger_04_Knuckle_03_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[302]"
+connectAttr "L_Finger_04_Knuckle_03_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[303]"
 		;
-connectAttr "L_Finger_04_Knuckle_03_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[303]"
+connectAttr "L_Finger_04_Knuckle_03_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[304]"
 		;
-connectAttr "L_Finger_04_Knuckle_03_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[304]"
+connectAttr "L_Finger_04_Knuckle_03_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[305]"
 		;
-connectAttr "L_Finger_04_Knuckle_03_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[305]"
+connectAttr "L_Finger_04_Knuckle_03_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[306]"
 		;
-connectAttr "L_Finger_04_Knuckle_03_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[306]"
+connectAttr "L_Finger_04_Knuckle_03_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[307]"
 		;
-connectAttr "L_Finger_04_Knuckle_03_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[307]"
+connectAttr "L_Finger_04_Knuckle_03_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[308]"
 		;
-connectAttr "R_Hand_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[308]";
-connectAttr "R_Hand_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[309]";
-connectAttr "R_Hand_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[310]";
-connectAttr "R_Hand_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[311]";
-connectAttr "R_Hand_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[312]";
-connectAttr "R_Hand_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[313]";
-connectAttr "R_Thumb_Knuckle_01_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[314]"
+connectAttr "R_Hand_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[309]";
+connectAttr "R_Hand_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[310]";
+connectAttr "R_Hand_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[311]";
+connectAttr "R_Hand_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[312]";
+connectAttr "R_Hand_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[313]";
+connectAttr "R_Hand_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[314]";
+connectAttr "R_Thumb_Knuckle_01_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[315]"
 		;
-connectAttr "R_Thumb_Knuckle_01_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[315]"
+connectAttr "R_Thumb_Knuckle_01_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[316]"
 		;
-connectAttr "R_Thumb_Knuckle_01_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[316]"
+connectAttr "R_Thumb_Knuckle_01_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[317]"
 		;
-connectAttr "R_Thumb_Knuckle_01_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[317]"
+connectAttr "R_Thumb_Knuckle_01_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[318]"
 		;
-connectAttr "R_Thumb_Knuckle_01_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[318]"
+connectAttr "R_Thumb_Knuckle_01_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[319]"
 		;
-connectAttr "R_Thumb_Knuckle_01_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[319]"
+connectAttr "R_Thumb_Knuckle_01_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[320]"
 		;
-connectAttr "R_Thumb_Knuckle_02_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[320]"
+connectAttr "R_Thumb_Knuckle_02_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[321]"
 		;
-connectAttr "R_Thumb_Knuckle_02_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[321]"
+connectAttr "R_Thumb_Knuckle_02_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[322]"
 		;
-connectAttr "R_Thumb_Knuckle_02_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[322]"
+connectAttr "R_Thumb_Knuckle_02_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[323]"
 		;
-connectAttr "R_Thumb_Knuckle_02_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[323]"
+connectAttr "R_Thumb_Knuckle_02_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[324]"
 		;
-connectAttr "R_Thumb_Knuckle_02_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[324]"
+connectAttr "R_Thumb_Knuckle_02_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[325]"
 		;
-connectAttr "R_Thumb_Knuckle_02_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[325]"
+connectAttr "R_Thumb_Knuckle_02_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[326]"
 		;
-connectAttr "R_Thumb_Knuckle_03_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[326]"
+connectAttr "R_Thumb_Knuckle_03_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[327]"
 		;
-connectAttr "R_Thumb_Knuckle_03_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[327]"
+connectAttr "R_Thumb_Knuckle_03_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[328]"
 		;
-connectAttr "R_Thumb_Knuckle_03_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[328]"
+connectAttr "R_Thumb_Knuckle_03_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[329]"
 		;
-connectAttr "R_Thumb_Knuckle_03_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[329]"
+connectAttr "R_Thumb_Knuckle_03_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[330]"
 		;
-connectAttr "R_Thumb_Knuckle_03_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[330]"
+connectAttr "R_Thumb_Knuckle_03_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[331]"
 		;
-connectAttr "R_Thumb_Knuckle_03_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[331]"
+connectAttr "R_Thumb_Knuckle_03_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[332]"
 		;
-connectAttr "R_Finger_01_Knuckle_01_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[332]"
+connectAttr "R_Finger_01_Knuckle_01_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[333]"
 		;
-connectAttr "R_Finger_01_Knuckle_01_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[333]"
+connectAttr "R_Finger_01_Knuckle_01_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[334]"
 		;
-connectAttr "R_Finger_01_Knuckle_01_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[334]"
+connectAttr "R_Finger_01_Knuckle_01_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[335]"
 		;
-connectAttr "R_Finger_01_Knuckle_01_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[335]"
+connectAttr "R_Finger_01_Knuckle_01_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[336]"
 		;
-connectAttr "R_Finger_01_Knuckle_01_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[336]"
+connectAttr "R_Finger_01_Knuckle_01_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[337]"
 		;
-connectAttr "R_Finger_01_Knuckle_01_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[337]"
+connectAttr "R_Finger_01_Knuckle_01_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[338]"
 		;
-connectAttr "R_Finger_01_Knuckle_02_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[338]"
+connectAttr "R_Finger_01_Knuckle_02_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[339]"
 		;
-connectAttr "R_Finger_01_Knuckle_02_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[339]"
+connectAttr "R_Finger_01_Knuckle_02_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[340]"
 		;
-connectAttr "R_Finger_01_Knuckle_02_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[340]"
+connectAttr "R_Finger_01_Knuckle_02_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[341]"
 		;
-connectAttr "R_Finger_01_Knuckle_02_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[341]"
+connectAttr "R_Finger_01_Knuckle_02_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[342]"
 		;
-connectAttr "R_Finger_01_Knuckle_02_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[342]"
+connectAttr "R_Finger_01_Knuckle_02_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[343]"
 		;
-connectAttr "R_Finger_01_Knuckle_02_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[343]"
+connectAttr "R_Finger_01_Knuckle_02_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[344]"
 		;
-connectAttr "R_Finger_01_Knuckle_03_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[344]"
+connectAttr "R_Finger_01_Knuckle_03_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[345]"
 		;
-connectAttr "R_Finger_01_Knuckle_03_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[345]"
+connectAttr "R_Finger_01_Knuckle_03_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[346]"
 		;
-connectAttr "R_Finger_01_Knuckle_03_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[346]"
+connectAttr "R_Finger_01_Knuckle_03_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[347]"
 		;
-connectAttr "R_Finger_01_Knuckle_03_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[347]"
+connectAttr "R_Finger_01_Knuckle_03_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[348]"
 		;
-connectAttr "R_Finger_01_Knuckle_03_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[348]"
+connectAttr "R_Finger_01_Knuckle_03_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[349]"
 		;
-connectAttr "R_Finger_01_Knuckle_03_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[349]"
+connectAttr "R_Finger_01_Knuckle_03_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[350]"
 		;
-connectAttr "R_Finger_02_Knuckle_01_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[350]"
+connectAttr "R_Finger_02_Knuckle_01_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[351]"
 		;
-connectAttr "R_Finger_02_Knuckle_01_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[351]"
+connectAttr "R_Finger_02_Knuckle_01_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[352]"
 		;
-connectAttr "R_Finger_02_Knuckle_01_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[352]"
+connectAttr "R_Finger_02_Knuckle_01_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[353]"
 		;
-connectAttr "R_Finger_02_Knuckle_01_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[353]"
+connectAttr "R_Finger_02_Knuckle_01_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[354]"
 		;
-connectAttr "R_Finger_02_Knuckle_01_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[354]"
+connectAttr "R_Finger_02_Knuckle_01_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[355]"
 		;
-connectAttr "R_Finger_02_Knuckle_01_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[355]"
+connectAttr "R_Finger_02_Knuckle_01_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[356]"
 		;
-connectAttr "R_Finger_02_Knuckle_02_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[356]"
+connectAttr "R_Finger_02_Knuckle_02_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[357]"
 		;
-connectAttr "R_Finger_02_Knuckle_02_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[357]"
+connectAttr "R_Finger_02_Knuckle_02_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[358]"
 		;
-connectAttr "R_Finger_02_Knuckle_02_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[358]"
+connectAttr "R_Finger_02_Knuckle_02_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[359]"
 		;
-connectAttr "R_Finger_02_Knuckle_02_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[359]"
+connectAttr "R_Finger_02_Knuckle_02_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[360]"
 		;
-connectAttr "R_Finger_02_Knuckle_02_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[360]"
+connectAttr "R_Finger_02_Knuckle_02_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[361]"
 		;
-connectAttr "R_Finger_02_Knuckle_02_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[361]"
+connectAttr "R_Finger_02_Knuckle_02_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[362]"
 		;
-connectAttr "R_Finger_02_Knuckle_03_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[362]"
+connectAttr "R_Finger_02_Knuckle_03_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[363]"
 		;
-connectAttr "R_Finger_02_Knuckle_03_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[363]"
+connectAttr "R_Finger_02_Knuckle_03_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[364]"
 		;
-connectAttr "R_Finger_02_Knuckle_03_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[364]"
+connectAttr "R_Finger_02_Knuckle_03_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[365]"
 		;
-connectAttr "R_Finger_02_Knuckle_03_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[365]"
+connectAttr "R_Finger_02_Knuckle_03_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[366]"
 		;
-connectAttr "R_Finger_02_Knuckle_03_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[366]"
+connectAttr "R_Finger_02_Knuckle_03_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[367]"
 		;
-connectAttr "R_Finger_02_Knuckle_03_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[367]"
+connectAttr "R_Finger_02_Knuckle_03_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[368]"
 		;
-connectAttr "R_Finger_03_Knuckle_01_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[368]"
+connectAttr "R_Finger_03_Knuckle_01_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[369]"
 		;
-connectAttr "R_Finger_03_Knuckle_01_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[369]"
+connectAttr "R_Finger_03_Knuckle_01_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[370]"
 		;
-connectAttr "R_Finger_03_Knuckle_01_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[370]"
+connectAttr "R_Finger_03_Knuckle_01_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[371]"
 		;
-connectAttr "R_Finger_03_Knuckle_01_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[371]"
+connectAttr "R_Finger_03_Knuckle_01_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[372]"
 		;
-connectAttr "R_Finger_03_Knuckle_01_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[372]"
+connectAttr "R_Finger_03_Knuckle_01_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[373]"
 		;
-connectAttr "R_Finger_03_Knuckle_01_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[373]"
+connectAttr "R_Finger_03_Knuckle_01_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[374]"
 		;
-connectAttr "R_Finger_03_Knuckle_02_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[374]"
+connectAttr "R_Finger_03_Knuckle_02_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[375]"
 		;
-connectAttr "R_Finger_03_Knuckle_02_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[375]"
+connectAttr "R_Finger_03_Knuckle_02_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[376]"
 		;
-connectAttr "R_Finger_03_Knuckle_02_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[376]"
+connectAttr "R_Finger_03_Knuckle_02_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[377]"
 		;
-connectAttr "R_Finger_03_Knuckle_02_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[377]"
+connectAttr "R_Finger_03_Knuckle_02_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[378]"
 		;
-connectAttr "R_Finger_03_Knuckle_02_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[378]"
+connectAttr "R_Finger_03_Knuckle_02_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[379]"
 		;
-connectAttr "R_Finger_03_Knuckle_02_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[379]"
+connectAttr "R_Finger_03_Knuckle_02_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[380]"
 		;
-connectAttr "R_Finger_03_Knuckle_03_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[380]"
+connectAttr "R_Finger_03_Knuckle_03_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[381]"
 		;
-connectAttr "R_Finger_03_Knuckle_03_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[381]"
+connectAttr "R_Finger_03_Knuckle_03_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[382]"
 		;
-connectAttr "R_Finger_03_Knuckle_03_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[382]"
+connectAttr "R_Finger_03_Knuckle_03_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[383]"
 		;
-connectAttr "R_Finger_03_Knuckle_03_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[383]"
+connectAttr "R_Finger_03_Knuckle_03_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[384]"
 		;
-connectAttr "R_Finger_03_Knuckle_03_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[384]"
+connectAttr "R_Finger_03_Knuckle_03_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[385]"
 		;
-connectAttr "R_Finger_03_Knuckle_03_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[385]"
+connectAttr "R_Finger_03_Knuckle_03_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[386]"
 		;
-connectAttr "R_Finger_04_Knuckle_01_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[386]"
+connectAttr "R_Finger_04_Knuckle_01_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[387]"
 		;
-connectAttr "R_Finger_04_Knuckle_01_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[387]"
+connectAttr "R_Finger_04_Knuckle_01_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[388]"
 		;
-connectAttr "R_Finger_04_Knuckle_01_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[388]"
+connectAttr "R_Finger_04_Knuckle_01_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[389]"
 		;
-connectAttr "R_Finger_04_Knuckle_01_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[389]"
+connectAttr "R_Finger_04_Knuckle_01_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[390]"
 		;
-connectAttr "R_Finger_04_Knuckle_01_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[390]"
+connectAttr "R_Finger_04_Knuckle_01_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[391]"
 		;
-connectAttr "R_Finger_04_Knuckle_01_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[391]"
+connectAttr "R_Finger_04_Knuckle_01_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[392]"
 		;
-connectAttr "R_Finger_04_Knuckle_02_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[392]"
+connectAttr "R_Finger_04_Knuckle_02_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[393]"
 		;
-connectAttr "R_Finger_04_Knuckle_02_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[393]"
+connectAttr "R_Finger_04_Knuckle_02_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[394]"
 		;
-connectAttr "R_Finger_04_Knuckle_02_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[394]"
+connectAttr "R_Finger_04_Knuckle_02_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[395]"
 		;
-connectAttr "R_Finger_04_Knuckle_02_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[395]"
+connectAttr "R_Finger_04_Knuckle_02_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[396]"
 		;
-connectAttr "R_Finger_04_Knuckle_02_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[396]"
+connectAttr "R_Finger_04_Knuckle_02_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[397]"
 		;
-connectAttr "R_Finger_04_Knuckle_02_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[397]"
+connectAttr "R_Finger_04_Knuckle_02_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[398]"
 		;
-connectAttr "R_Finger_04_Knuckle_03_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[398]"
+connectAttr "R_Finger_04_Knuckle_03_FK_jnt_ctrl_translateX.o" "Phoenix1_SKMRN.phl[399]"
 		;
-connectAttr "R_Finger_04_Knuckle_03_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[399]"
+connectAttr "R_Finger_04_Knuckle_03_FK_jnt_ctrl_translateY.o" "Phoenix1_SKMRN.phl[400]"
 		;
-connectAttr "R_Finger_04_Knuckle_03_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[400]"
+connectAttr "R_Finger_04_Knuckle_03_FK_jnt_ctrl_translateZ.o" "Phoenix1_SKMRN.phl[401]"
 		;
-connectAttr "R_Finger_04_Knuckle_03_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[401]"
+connectAttr "R_Finger_04_Knuckle_03_FK_jnt_ctrl_rotateZ.o" "Phoenix1_SKMRN.phl[402]"
 		;
-connectAttr "R_Finger_04_Knuckle_03_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[402]"
+connectAttr "R_Finger_04_Knuckle_03_FK_jnt_ctrl_rotateX.o" "Phoenix1_SKMRN.phl[403]"
 		;
-connectAttr "R_Finger_04_Knuckle_03_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[403]"
+connectAttr "R_Finger_04_Knuckle_03_FK_jnt_ctrl_rotateY.o" "Phoenix1_SKMRN.phl[404]"
 		;
-connectAttr "Breath_ctrl_translateX.o" "Phoenix1_SKMRN.phl[404]";
+connectAttr "Breath_ctrl_translateX.o" "Phoenix1_SKMRN.phl[405]";
 connectAttr "Background_Layer.di" "Background.do";
 connectAttr "polyBevel1.out" "BackgroundShape.i";
 connectAttr "RenderCam_visibility.o" "RenderCam.v";
